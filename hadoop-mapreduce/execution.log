@@ -1,0 +1,58 @@
+(base) ➜  hadoop-mapreduce git:(main) ✗ cat data.csv | python src/autoinc_mapper1.py
+VXIO456XLBB630221       ('I', 'Nissan', '2003')
+INU45KIOOPA343980       ('I', 'Mercedes', '2015')
+VXIO456XLBB630221       ('A', '', '')
+VXIO456XLBB630221       ('R', '', '')
+VOME254OOXW344325       ('I', 'Mercedes', '2015')
+VOME254OOXW344325       ('R', '', '')
+VXIO456XLBB630221       ('R', '', '')
+EXOA00341AB123456       ('I', 'Mercedes', '2016')
+VOME254OOXW344325       ('A', '', '')
+VOME254OOXW344325       ('R', '', '')
+EXOA00341AB123456       ('R', '', '')
+EXOA00341AB123456       ('A', '', '')
+VOME254OOXW344325       ('R', '', '')
+UXIA769ABCC447906       ('I', 'Toyota', '2017')
+UXIA769ABCC447906       ('R', '', '')
+INU45KIOOPA343980       ('A', '', '')
+
+(base) ➜  hadoop-mapreduce git:(main) ✗ cat data.csv | python src/autoinc_mapper1.py | sort
+EXOA00341AB123456       ('A', '', '')
+EXOA00341AB123456       ('I', 'Mercedes', '2016')
+EXOA00341AB123456       ('R', '', '')
+INU45KIOOPA343980       ('A', '', '')
+INU45KIOOPA343980       ('I', 'Mercedes', '2015')
+UXIA769ABCC447906       ('I', 'Toyota', '2017')
+UXIA769ABCC447906       ('R', '', '')
+VOME254OOXW344325       ('A', '', '')
+VOME254OOXW344325       ('I', 'Mercedes', '2015')
+VOME254OOXW344325       ('R', '', '')
+VOME254OOXW344325       ('R', '', '')
+VOME254OOXW344325       ('R', '', '')
+VXIO456XLBB630221       ('A', '', '')
+VXIO456XLBB630221       ('I', 'Nissan', '2003')
+VXIO456XLBB630221       ('R', '', '')
+VXIO456XLBB630221       ('R', '', '')
+
+(base) ➜  hadoop-mapreduce git:(main) ✗ cat data.csv | python src/autoinc_mapper1.py | sort | python src/autoinc_reducer1.py
+A, Mercedes, 2016
+A, Mercedes, 2015
+A, Mercedes, 2015
+A, Nissan, 2003
+
+(base) ➜  hadoop-mapreduce git:(main) ✗ cat data.csv | python src/autoinc_mapper1.py | sort | python src/autoinc_reducer1.py | python src/autoinc_mapper2.py
+Mercedes2016    1
+Mercedes2015    1
+Mercedes2015    1
+Nissan2003      1
+
+(base) ➜  hadoop-mapreduce git:(main) ✗ cat data.csv | python src/autoinc_mapper1.py | sort | python src/autoinc_reducer1.py | python src/autoinc_mapper2.py | sort
+Mercedes2015    1
+Mercedes2015    1
+Mercedes2016    1
+Nissan2003      1
+
+(base) ➜  hadoop-mapreduce git:(main) ✗ cat data.csv | python src/autoinc_mapper1.py | sort | python src/autoinc_reducer1.py | python src/autoinc_mapper2.py | sort | python src/autoinc_reducer2.py
+Mercedes2015    2
+Mercedes2016    1
+Nissan2003      1
