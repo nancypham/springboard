@@ -1,0 +1,317 @@
+'''Execution log'''
+
+Errors from when marketvol dag had a missing library.
+
+(base) ➜  springboard /Users/nancypham/opt/anaconda3/bin/python /Users/nancypham/springboard/airflow-dag/log_analyzer.py
+
+Total number of errors:  124 
+
+Here are all the errors: 
+
+[2021-11-20 22:21:16,490] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:21:16,504] {standard_task_runner.py:88} ERROR - Failed to execute job 92 for task python_download_tsla
+[2021-11-20 22:16:14,016] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:16:14,029] {standard_task_runner.py:88} ERROR - Failed to execute job 90 for task python_download_tsla
+[2021-11-20 22:21:14,853] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:21:14,866] {standard_task_runner.py:88} ERROR - Failed to execute job 91 for task python_download_aapl
+[2021-11-20 22:16:12,397] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:16:12,411] {standard_task_runner.py:88} ERROR - Failed to execute job 89 for task python_download_aapl
+[2021-11-20 21:58:12,004] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:58:12,016] {standard_task_runner.py:88} ERROR - Failed to execute job 67 for task move_tsla
+[2021-11-20 21:53:08,341] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:53:08,355] {standard_task_runner.py:88} ERROR - Failed to execute job 47 for task move_tsla
+[2021-11-20 21:49:30,267] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:30,280] {standard_task_runner.py:88} ERROR - Failed to execute job 23 for task move_tsla
+[2021-11-20 21:54:33,666] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:33,678] {standard_task_runner.py:88} ERROR - Failed to execute job 49 for task move_tsla
+[2021-11-20 15:58:39,843] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 15:58:39,859] {standard_task_runner.py:88} ERROR - Failed to execute job 12 for task move_tsla
+[2021-11-20 21:55:22,032] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:22,045] {standard_task_runner.py:88} ERROR - Failed to execute job 65 for task move_tsla
+[2021-11-20 22:05:09,544] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:09,559] {standard_task_runner.py:88} ERROR - Failed to execute job 80 for task move_tsla
+[2021-11-20 21:50:17,434] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:17,449] {standard_task_runner.py:88} ERROR - Failed to execute job 44 for task move_tsla
+[2021-11-20 21:55:09,093] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:09,106] {standard_task_runner.py:88} ERROR - Failed to execute job 61 for task move_tsla
+[2021-11-20 22:05:02,578] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:02,593] {standard_task_runner.py:88} ERROR - Failed to execute job 76 for task move_tsla
+[2021-11-20 21:50:05,208] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:05,223] {standard_task_runner.py:88} ERROR - Failed to execute job 39 for task move_tsla
+[2021-11-20 21:54:44,554] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:44,570] {standard_task_runner.py:88} ERROR - Failed to execute job 53 for task move_tsla
+[2021-11-20 22:04:52,075] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:52,088] {standard_task_runner.py:88} ERROR - Failed to execute job 70 for task move_tsla
+[2021-11-20 21:49:40,762] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:40,776] {standard_task_runner.py:88} ERROR - Failed to execute job 28 for task move_tsla
+[2021-11-20 21:54:49,898] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:49,911] {standard_task_runner.py:88} ERROR - Failed to execute job 55 for task move_tsla
+[2021-11-20 22:05:13,160] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:13,174] {standard_task_runner.py:88} ERROR - Failed to execute job 82 for task move_tsla
+[2021-11-20 21:49:44,344] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:44,358] {standard_task_runner.py:88} ERROR - Failed to execute job 30 for task move_tsla
+[2021-11-20 21:55:02,203] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:02,217] {standard_task_runner.py:88} ERROR - Failed to execute job 59 for task move_tsla
+[2021-11-20 22:04:59,085] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:59,100] {standard_task_runner.py:88} ERROR - Failed to execute job 74 for task move_tsla
+[2021-11-20 21:49:58,366] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:58,381] {standard_task_runner.py:88} ERROR - Failed to execute job 36 for task move_tsla
+[2021-11-20 21:55:15,452] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:15,465] {standard_task_runner.py:88} ERROR - Failed to execute job 63 for task move_tsla
+[2021-11-20 22:05:06,030] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:06,046] {standard_task_runner.py:88} ERROR - Failed to execute job 78 for task move_tsla
+[2021-11-20 21:50:12,375] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:12,389] {standard_task_runner.py:88} ERROR - Failed to execute job 42 for task move_tsla
+[2021-11-20 21:49:33,877] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:33,890] {standard_task_runner.py:88} ERROR - Failed to execute job 25 for task move_tsla
+[2021-11-20 21:54:38,375] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:38,387] {standard_task_runner.py:88} ERROR - Failed to execute job 51 for task move_tsla
+[2021-11-20 15:58:45,188] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 15:58:45,201] {standard_task_runner.py:88} ERROR - Failed to execute job 14 for task move_tsla
+[2021-11-20 21:54:54,708] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:54,720] {standard_task_runner.py:88} ERROR - Failed to execute job 57 for task move_tsla
+[2021-11-20 22:04:55,529] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:55,544] {standard_task_runner.py:88} ERROR - Failed to execute job 72 for task move_tsla
+[2021-11-20 21:49:51,288] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:51,302] {standard_task_runner.py:88} ERROR - Failed to execute job 33 for task move_tsla
+[2021-11-20 21:58:10,264] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:58:10,279] {standard_task_runner.py:88} ERROR - Failed to execute job 66 for task move_aapl
+[2021-11-20 22:05:14,818] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:14,833] {standard_task_runner.py:88} ERROR - Failed to execute job 83 for task move_aapl
+[2021-11-20 21:53:06,630] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:53:06,643] {standard_task_runner.py:88} ERROR - Failed to execute job 46 for task move_aapl
+[2021-11-20 21:49:28,546] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:28,562] {standard_task_runner.py:88} ERROR - Failed to execute job 22 for task move_aapl
+[2021-11-20 21:54:30,525] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:30,539] {standard_task_runner.py:88} ERROR - Failed to execute job 48 for task move_aapl
+[2021-11-20 15:58:37,874] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 15:58:37,891] {standard_task_runner.py:88} ERROR - Failed to execute job 11 for task move_aapl
+[2021-11-20 21:55:18,827] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:18,841] {standard_task_runner.py:88} ERROR - Failed to execute job 64 for task move_aapl
+[2021-11-20 22:05:07,805] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:07,819] {standard_task_runner.py:88} ERROR - Failed to execute job 79 for task move_aapl
+[2021-11-20 21:50:15,594] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:15,608] {standard_task_runner.py:88} ERROR - Failed to execute job 43 for task move_aapl
+[2021-11-20 21:55:05,778] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:05,791] {standard_task_runner.py:88} ERROR - Failed to execute job 60 for task move_aapl
+[2021-11-20 22:05:00,840] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:00,853] {standard_task_runner.py:88} ERROR - Failed to execute job 75 for task move_aapl
+[2021-11-20 21:50:03,366] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:03,382] {standard_task_runner.py:88} ERROR - Failed to execute job 38 for task move_aapl
+[2021-11-20 21:54:41,447] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:41,460] {standard_task_runner.py:88} ERROR - Failed to execute job 52 for task move_aapl
+[2021-11-20 22:04:50,407] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:50,421] {standard_task_runner.py:88} ERROR - Failed to execute job 69 for task move_aapl
+[2021-11-20 21:49:38,962] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:38,979] {standard_task_runner.py:88} ERROR - Failed to execute job 27 for task move_aapl
+[2021-11-20 21:54:46,394] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:46,408] {standard_task_runner.py:88} ERROR - Failed to execute job 54 for task move_aapl
+[2021-11-20 22:05:11,298] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:11,311] {standard_task_runner.py:88} ERROR - Failed to execute job 81 for task move_aapl
+[2021-11-20 21:49:42,536] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:42,550] {standard_task_runner.py:88} ERROR - Failed to execute job 29 for task move_aapl
+[2021-11-20 21:55:00,498] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:00,510] {standard_task_runner.py:88} ERROR - Failed to execute job 58 for task move_aapl
+[2021-11-20 22:04:57,314] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:57,328] {standard_task_runner.py:88} ERROR - Failed to execute job 73 for task move_aapl
+[2021-11-20 21:49:56,574] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:56,586] {standard_task_runner.py:88} ERROR - Failed to execute job 35 for task move_aapl
+[2021-11-20 21:55:12,217] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:12,230] {standard_task_runner.py:88} ERROR - Failed to execute job 62 for task move_aapl
+[2021-11-20 21:50:10,571] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:10,585] {standard_task_runner.py:88} ERROR - Failed to execute job 41 for task move_aapl
+[2021-11-20 21:49:32,080] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:32,094] {standard_task_runner.py:88} ERROR - Failed to execute job 24 for task move_aapl
+[2021-11-20 21:54:35,322] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:35,335] {standard_task_runner.py:88} ERROR - Failed to execute job 50 for task move_aapl
+[2021-11-20 15:58:43,352] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 15:58:43,366] {standard_task_runner.py:88} ERROR - Failed to execute job 13 for task move_aapl
+[2021-11-20 21:54:53,047] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:53,059] {standard_task_runner.py:88} ERROR - Failed to execute job 56 for task move_aapl
+[2021-11-20 22:04:53,722] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:53,736] {standard_task_runner.py:88} ERROR - Failed to execute job 71 for task move_aapl
+[2021-11-20 21:49:49,472] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:49,486] {standard_task_runner.py:88} ERROR - Failed to execute job 32 for task move_aapl
+(base) ➜  springboard /Users/nancypham/opt/anaconda3/bin/python /Users/nancypham/springboard/airflow-dag/log_analyzer.py
+
+Total number of errors:  124
+
+Here are all the errors: 
+[2021-11-20 22:21:16,490] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:21:16,504] {standard_task_runner.py:88} ERROR - Failed to execute job 92 for task python_download_tsla
+[2021-11-20 22:16:14,016] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:16:14,029] {standard_task_runner.py:88} ERROR - Failed to execute job 90 for task python_download_tsla
+[2021-11-20 22:21:14,853] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:21:14,866] {standard_task_runner.py:88} ERROR - Failed to execute job 91 for task python_download_aapl
+[2021-11-20 22:16:12,397] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:16:12,411] {standard_task_runner.py:88} ERROR - Failed to execute job 89 for task python_download_aapl
+[2021-11-20 21:58:12,004] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:58:12,016] {standard_task_runner.py:88} ERROR - Failed to execute job 67 for task move_tsla
+[2021-11-20 21:53:08,341] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:53:08,355] {standard_task_runner.py:88} ERROR - Failed to execute job 47 for task move_tsla
+[2021-11-20 21:49:30,267] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:30,280] {standard_task_runner.py:88} ERROR - Failed to execute job 23 for task move_tsla
+[2021-11-20 21:54:33,666] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:33,678] {standard_task_runner.py:88} ERROR - Failed to execute job 49 for task move_tsla
+[2021-11-20 15:58:39,843] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 15:58:39,859] {standard_task_runner.py:88} ERROR - Failed to execute job 12 for task move_tsla
+[2021-11-20 21:55:22,032] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:22,045] {standard_task_runner.py:88} ERROR - Failed to execute job 65 for task move_tsla
+[2021-11-20 22:05:09,544] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:09,559] {standard_task_runner.py:88} ERROR - Failed to execute job 80 for task move_tsla
+[2021-11-20 21:50:17,434] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:17,449] {standard_task_runner.py:88} ERROR - Failed to execute job 44 for task move_tsla
+[2021-11-20 21:55:09,093] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:09,106] {standard_task_runner.py:88} ERROR - Failed to execute job 61 for task move_tsla
+[2021-11-20 22:05:02,578] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:02,593] {standard_task_runner.py:88} ERROR - Failed to execute job 76 for task move_tsla
+[2021-11-20 21:50:05,208] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:05,223] {standard_task_runner.py:88} ERROR - Failed to execute job 39 for task move_tsla
+[2021-11-20 21:54:44,554] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:44,570] {standard_task_runner.py:88} ERROR - Failed to execute job 53 for task move_tsla
+[2021-11-20 22:04:52,075] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:52,088] {standard_task_runner.py:88} ERROR - Failed to execute job 70 for task move_tsla
+[2021-11-20 21:49:40,762] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:40,776] {standard_task_runner.py:88} ERROR - Failed to execute job 28 for task move_tsla
+[2021-11-20 21:54:49,898] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:49,911] {standard_task_runner.py:88} ERROR - Failed to execute job 55 for task move_tsla
+[2021-11-20 22:05:13,160] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:13,174] {standard_task_runner.py:88} ERROR - Failed to execute job 82 for task move_tsla
+[2021-11-20 21:49:44,344] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:44,358] {standard_task_runner.py:88} ERROR - Failed to execute job 30 for task move_tsla
+[2021-11-20 21:55:02,203] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:02,217] {standard_task_runner.py:88} ERROR - Failed to execute job 59 for task move_tsla
+[2021-11-20 22:04:59,085] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:59,100] {standard_task_runner.py:88} ERROR - Failed to execute job 74 for task move_tsla
+[2021-11-20 21:49:58,366] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:58,381] {standard_task_runner.py:88} ERROR - Failed to execute job 36 for task move_tsla
+[2021-11-20 21:55:15,452] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:15,465] {standard_task_runner.py:88} ERROR - Failed to execute job 63 for task move_tsla
+[2021-11-20 22:05:06,030] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:06,046] {standard_task_runner.py:88} ERROR - Failed to execute job 78 for task move_tsla
+[2021-11-20 21:50:12,375] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:12,389] {standard_task_runner.py:88} ERROR - Failed to execute job 42 for task move_tsla
+[2021-11-20 21:49:33,877] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:33,890] {standard_task_runner.py:88} ERROR - Failed to execute job 25 for task move_tsla
+[2021-11-20 21:54:38,375] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:38,387] {standard_task_runner.py:88} ERROR - Failed to execute job 51 for task move_tsla
+[2021-11-20 15:58:45,188] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 15:58:45,201] {standard_task_runner.py:88} ERROR - Failed to execute job 14 for task move_tsla
+[2021-11-20 21:54:54,708] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:54,720] {standard_task_runner.py:88} ERROR - Failed to execute job 57 for task move_tsla
+[2021-11-20 22:04:55,529] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:55,544] {standard_task_runner.py:88} ERROR - Failed to execute job 72 for task move_tsla
+[2021-11-20 21:49:51,288] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:51,302] {standard_task_runner.py:88} ERROR - Failed to execute job 33 for task move_tsla
+[2021-11-20 21:58:10,264] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:58:10,279] {standard_task_runner.py:88} ERROR - Failed to execute job 66 for task move_aapl
+[2021-11-20 22:05:14,818] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:14,833] {standard_task_runner.py:88} ERROR - Failed to execute job 83 for task move_aapl
+[2021-11-20 21:53:06,630] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:53:06,643] {standard_task_runner.py:88} ERROR - Failed to execute job 46 for task move_aapl
+[2021-11-20 21:49:28,546] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:28,562] {standard_task_runner.py:88} ERROR - Failed to execute job 22 for task move_aapl
+[2021-11-20 21:54:30,525] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:30,539] {standard_task_runner.py:88} ERROR - Failed to execute job 48 for task move_aapl
+[2021-11-20 15:58:37,874] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 15:58:37,891] {standard_task_runner.py:88} ERROR - Failed to execute job 11 for task move_aapl
+[2021-11-20 21:55:18,827] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:18,841] {standard_task_runner.py:88} ERROR - Failed to execute job 64 for task move_aapl
+[2021-11-20 22:05:07,805] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:07,819] {standard_task_runner.py:88} ERROR - Failed to execute job 79 for task move_aapl
+[2021-11-20 21:50:15,594] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:15,608] {standard_task_runner.py:88} ERROR - Failed to execute job 43 for task move_aapl
+[2021-11-20 21:55:05,778] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:05,791] {standard_task_runner.py:88} ERROR - Failed to execute job 60 for task move_aapl
+[2021-11-20 22:05:00,840] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:00,853] {standard_task_runner.py:88} ERROR - Failed to execute job 75 for task move_aapl
+[2021-11-20 21:50:03,366] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:03,382] {standard_task_runner.py:88} ERROR - Failed to execute job 38 for task move_aapl
+[2021-11-20 21:54:41,447] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:41,460] {standard_task_runner.py:88} ERROR - Failed to execute job 52 for task move_aapl
+[2021-11-20 22:04:50,407] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:50,421] {standard_task_runner.py:88} ERROR - Failed to execute job 69 for task move_aapl
+[2021-11-20 21:49:38,962] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:38,979] {standard_task_runner.py:88} ERROR - Failed to execute job 27 for task move_aapl
+[2021-11-20 21:54:46,394] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:46,408] {standard_task_runner.py:88} ERROR - Failed to execute job 54 for task move_aapl
+[2021-11-20 22:05:11,298] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:05:11,311] {standard_task_runner.py:88} ERROR - Failed to execute job 81 for task move_aapl
+[2021-11-20 21:49:42,536] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:42,550] {standard_task_runner.py:88} ERROR - Failed to execute job 29 for task move_aapl
+[2021-11-20 21:55:00,498] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:00,510] {standard_task_runner.py:88} ERROR - Failed to execute job 58 for task move_aapl
+[2021-11-20 22:04:57,314] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:57,328] {standard_task_runner.py:88} ERROR - Failed to execute job 73 for task move_aapl
+[2021-11-20 21:49:56,574] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:56,586] {standard_task_runner.py:88} ERROR - Failed to execute job 35 for task move_aapl
+[2021-11-20 21:55:12,217] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:55:12,230] {standard_task_runner.py:88} ERROR - Failed to execute job 62 for task move_aapl
+[2021-11-20 21:50:10,571] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:50:10,585] {standard_task_runner.py:88} ERROR - Failed to execute job 41 for task move_aapl
+[2021-11-20 21:49:32,080] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:32,094] {standard_task_runner.py:88} ERROR - Failed to execute job 24 for task move_aapl
+[2021-11-20 21:54:35,322] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:35,335] {standard_task_runner.py:88} ERROR - Failed to execute job 50 for task move_aapl
+[2021-11-20 15:58:43,352] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 15:58:43,366] {standard_task_runner.py:88} ERROR - Failed to execute job 13 for task move_aapl
+[2021-11-20 21:54:53,047] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:54:53,059] {standard_task_runner.py:88} ERROR - Failed to execute job 56 for task move_aapl
+[2021-11-20 22:04:53,722] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 22:04:53,736] {standard_task_runner.py:88} ERROR - Failed to execute job 71 for task move_aapl
+[2021-11-20 21:49:49,472] {taskinstance.py:1703} ERROR - Task failed with exception
+[2021-11-20 21:49:49,486] {standard_task_runner.py:88} ERROR - Failed to execute job 32 for task move_aapl
+
+Errors for working marketvol dag
+
+*** Reading local file: /opt/airflow/logs/loganalyzer/aapl_log_errors/2022-02-12T19:23:42.131358+00:00/6.log
+[2022-02-12 20:01:40,940] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: loganalyzer.aapl_log_errors 2022-02-12T19:23:42.131358+00:00 [queued]>
+[2022-02-12 20:01:40,946] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: loganalyzer.aapl_log_errors 2022-02-12T19:23:42.131358+00:00 [queued]>
+[2022-02-12 20:01:40,946] {taskinstance.py:1042} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 20:01:40,946] {taskinstance.py:1043} INFO - Starting attempt 6 of 8
+[2022-02-12 20:01:40,946] {taskinstance.py:1044} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 20:01:40,956] {taskinstance.py:1063} INFO - Executing <Task(PythonOperator): aapl_log_errors> on 2022-02-12T19:23:42.131358+00:00
+[2022-02-12 20:01:40,960] {standard_task_runner.py:52} INFO - Started process 6829 to run task
+[2022-02-12 20:01:40,965] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'loganalyzer', 'aapl_log_errors', '2022-02-12T19:23:42.131358+00:00', '--job-id', '118', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/log_analyzer.py', '--cfg-path', '/tmp/tmp0j1b5lke', '--error-file', '/tmp/tmp35cbmdty']
+[2022-02-12 20:01:40,965] {standard_task_runner.py:77} INFO - Job 118: Subtask aapl_log_errors
+[2022-02-12 20:01:40,998] {logging_mixin.py:104} INFO - Running <TaskInstance: loganalyzer.aapl_log_errors 2022-02-12T19:23:42.131358+00:00 [running]> on host 5a2017ac663d
+[2022-02-12 20:01:41,025] {taskinstance.py:1255} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=loganalyzer
+AIRFLOW_CTX_TASK_ID=aapl_log_errors
+AIRFLOW_CTX_EXECUTION_DATE=2022-02-12T19:23:42.131358+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-02-12T19:23:42.131358+00:00
+[2022-02-12 20:01:41,044] {log_analyzer.py:34} INFO - Total count is: 0
+[2022-02-12 20:01:41,044] {log_analyzer.py:35} INFO - Error list is : []
+[2022-02-12 20:01:41,044] {python.py:118} INFO - Done. Returned value was: (0, [])
+[2022-02-12 20:01:41,058] {taskinstance.py:1159} INFO - Marking task as SUCCESS. dag_id=loganalyzer, task_id=aapl_log_errors, execution_date=20220212T192342, start_date=20220212T200140, end_date=20220212T200141
+[2022-02-12 20:01:41,080] {taskinstance.py:1220} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2022-02-12 20:01:41,098] {local_task_job.py:146} INFO - Task exited with return code 0
+
+*** Reading local file: /opt/airflow/logs/loganalyzer/tsla_log_errors/2022-02-12T19:23:42.131358+00:00/3.log
+[2022-02-12 20:01:42,494] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: loganalyzer.tsla_log_errors 2022-02-12T19:23:42.131358+00:00 [queued]>
+[2022-02-12 20:01:42,501] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: loganalyzer.tsla_log_errors 2022-02-12T19:23:42.131358+00:00 [queued]>
+[2022-02-12 20:01:42,501] {taskinstance.py:1042} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 20:01:42,501] {taskinstance.py:1043} INFO - Starting attempt 3 of 5
+[2022-02-12 20:01:42,501] {taskinstance.py:1044} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 20:01:42,512] {taskinstance.py:1063} INFO - Executing <Task(PythonOperator): tsla_log_errors> on 2022-02-12T19:23:42.131358+00:00
+[2022-02-12 20:01:42,514] {standard_task_runner.py:52} INFO - Started process 6833 to run task
+[2022-02-12 20:01:42,520] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'loganalyzer', 'tsla_log_errors', '2022-02-12T19:23:42.131358+00:00', '--job-id', '119', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/log_analyzer.py', '--cfg-path', '/tmp/tmp76x_hkwl', '--error-file', '/tmp/tmpu_znuchq']
+[2022-02-12 20:01:42,521] {standard_task_runner.py:77} INFO - Job 119: Subtask tsla_log_errors
+[2022-02-12 20:01:42,552] {logging_mixin.py:104} INFO - Running <TaskInstance: loganalyzer.tsla_log_errors 2022-02-12T19:23:42.131358+00:00 [running]> on host 5a2017ac663d
+[2022-02-12 20:01:42,576] {taskinstance.py:1255} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=loganalyzer
+AIRFLOW_CTX_TASK_ID=tsla_log_errors
+AIRFLOW_CTX_EXECUTION_DATE=2022-02-12T19:23:42.131358+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-02-12T19:23:42.131358+00:00
+[2022-02-12 20:01:42,586] {log_analyzer.py:34} INFO - Total count is: 0
+[2022-02-12 20:01:42,586] {log_analyzer.py:35} INFO - Error list is : []
+[2022-02-12 20:01:42,586] {python.py:118} INFO - Done. Returned value was: (0, [])
+[2022-02-12 20:01:42,600] {taskinstance.py:1159} INFO - Marking task as SUCCESS. dag_id=loganalyzer, task_id=tsla_log_errors, execution_date=20220212T192342, start_date=20220212T200142, end_date=20220212T200142
+[2022-02-12 20:01:42,615] {taskinstance.py:1220} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2022-02-12 20:01:42,652] {local_task_job.py:146} INFO - Task exited with return code 0

@@ -1,0 +1,195 @@
+dag: marketvol
+
+*** Reading local file: /opt/airflow/logs/marketvol/init_temp_directory/2022-02-12T19:13:37.216701+00:00/1.log
+[2022-02-12 19:27:14,704] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.init_temp_directory 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:14,709] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.init_temp_directory 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:14,709] {taskinstance.py:1042} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:14,709] {taskinstance.py:1043} INFO - Starting attempt 1 of 3
+[2022-02-12 19:27:14,709] {taskinstance.py:1044} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:14,720] {taskinstance.py:1063} INFO - Executing <Task(BashOperator): init_temp_directory> on 2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:14,722] {standard_task_runner.py:52} INFO - Started process 2967 to run task
+[2022-02-12 19:27:14,727] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'marketvol', 'init_temp_directory', '2022-02-12T19:13:37.216701+00:00', '--job-id', '89', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/daily_stock_data.py', '--cfg-path', '/tmp/tmp0l21yo2c', '--error-file', '/tmp/tmpyhi2fjtl']
+[2022-02-12 19:27:14,728] {standard_task_runner.py:77} INFO - Job 89: Subtask init_temp_directory
+[2022-02-12 19:27:14,759] {logging_mixin.py:104} INFO - Running <TaskInstance: marketvol.init_temp_directory 2022-02-12T19:13:37.216701+00:00 [running]> on host 5a2017ac663d
+[2022-02-12 19:27:14,785] {taskinstance.py:1255} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=marketvol
+AIRFLOW_CTX_TASK_ID=init_temp_directory
+AIRFLOW_CTX_EXECUTION_DATE=2022-02-12T19:13:37.216701+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:14,785] {bash.py:135} INFO - Tmp dir root location: 
+ /tmp
+[2022-02-12 19:27:14,786] {bash.py:158} INFO - Running command: mkdir -p /tmp/data/2022-02-12
+[2022-02-12 19:27:14,793] {bash.py:169} INFO - Output:
+[2022-02-12 19:27:14,796] {bash.py:177} INFO - Command exited with return code 0
+[2022-02-12 19:27:14,813] {taskinstance.py:1159} INFO - Marking task as SUCCESS. dag_id=marketvol, task_id=init_temp_directory, execution_date=20220212T191337, start_date=20220212T192714, end_date=20220212T192714
+[2022-02-12 19:27:14,835] {taskinstance.py:1220} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2022-02-12 19:27:14,860] {local_task_job.py:146} INFO - Task exited with return code 0
+
+*** Reading local file: /opt/airflow/logs/marketvol/download_tsla/2022-02-12T19:13:37.216701+00:00/1.log
+[2022-02-12 19:27:18,182] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.download_tsla 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:18,190] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.download_tsla 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:18,190] {taskinstance.py:1042} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:18,190] {taskinstance.py:1043} INFO - Starting attempt 1 of 3
+[2022-02-12 19:27:18,190] {taskinstance.py:1044} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:18,202] {taskinstance.py:1063} INFO - Executing <Task(PythonOperator): download_tsla> on 2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:18,204] {standard_task_runner.py:52} INFO - Started process 2986 to run task
+[2022-02-12 19:27:18,210] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'marketvol', 'download_tsla', '2022-02-12T19:13:37.216701+00:00', '--job-id', '91', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/daily_stock_data.py', '--cfg-path', '/tmp/tmp0cgzu4cn', '--error-file', '/tmp/tmposfdbs9z']
+[2022-02-12 19:27:18,210] {standard_task_runner.py:77} INFO - Job 91: Subtask download_tsla
+[2022-02-12 19:27:18,243] {logging_mixin.py:104} INFO - Running <TaskInstance: marketvol.download_tsla 2022-02-12T19:13:37.216701+00:00 [running]> on host 5a2017ac663d
+[2022-02-12 19:27:18,274] {taskinstance.py:1255} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=marketvol
+AIRFLOW_CTX_TASK_ID=download_tsla
+AIRFLOW_CTX_EXECUTION_DATE=2022-02-12T19:13:37.216701+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:19,132] {logging_mixin.py:104} INFO - 
+[*********************100%***********************]  1 of 1 completed
+[2022-02-12 19:27:19,133] {logging_mixin.py:104} INFO - 
+[2022-02-12 19:27:19,133] {logging_mixin.py:104} INFO - 
+1 Failed download:
+[2022-02-12 19:27:19,133] {logging_mixin.py:104} INFO - - TSLA: No data found for this date range, symbol may be delisted
+[2022-02-12 19:27:19,135] {python.py:118} INFO - Done. Returned value was: None
+[2022-02-12 19:27:19,140] {taskinstance.py:1159} INFO - Marking task as SUCCESS. dag_id=marketvol, task_id=download_tsla, execution_date=20220212T191337, start_date=20220212T192718, end_date=20220212T192719
+[2022-02-12 19:27:19,162] {taskinstance.py:1220} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2022-02-12 19:27:19,201] {local_task_job.py:146} INFO - Task exited with return code 0
+
+*** Reading local file: /opt/airflow/logs/marketvol/move_tsla/2022-02-12T19:13:37.216701+00:00/1.log
+[2022-02-12 19:27:21,736] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.move_tsla 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:21,742] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.move_tsla 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:21,742] {taskinstance.py:1042} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:21,742] {taskinstance.py:1043} INFO - Starting attempt 1 of 3
+[2022-02-12 19:27:21,742] {taskinstance.py:1044} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:21,752] {taskinstance.py:1063} INFO - Executing <Task(BashOperator): move_tsla> on 2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:21,754] {standard_task_runner.py:52} INFO - Started process 2998 to run task
+[2022-02-12 19:27:21,759] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'marketvol', 'move_tsla', '2022-02-12T19:13:37.216701+00:00', '--job-id', '93', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/daily_stock_data.py', '--cfg-path', '/tmp/tmpwk_eqpe5', '--error-file', '/tmp/tmpqhi3noum']
+[2022-02-12 19:27:21,760] {standard_task_runner.py:77} INFO - Job 93: Subtask move_tsla
+[2022-02-12 19:27:21,791] {logging_mixin.py:104} INFO - Running <TaskInstance: marketvol.move_tsla 2022-02-12T19:13:37.216701+00:00 [running]> on host 5a2017ac663d
+[2022-02-12 19:27:21,816] {taskinstance.py:1255} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=marketvol
+AIRFLOW_CTX_TASK_ID=move_tsla
+AIRFLOW_CTX_EXECUTION_DATE=2022-02-12T19:13:37.216701+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:21,816] {bash.py:135} INFO - Tmp dir root location: 
+ /tmp
+[2022-02-12 19:27:21,817] {bash.py:158} INFO - Running command: 
+    mv /opt/airflow//tsla_data.csv /tmp/data/2022-02-12
+[2022-02-12 19:27:21,824] {bash.py:169} INFO - Output:
+[2022-02-12 19:27:21,827] {bash.py:177} INFO - Command exited with return code 0
+[2022-02-12 19:27:21,843] {taskinstance.py:1159} INFO - Marking task as SUCCESS. dag_id=marketvol, task_id=move_tsla, execution_date=20220212T191337, start_date=20220212T192721, end_date=20220212T192721
+[2022-02-12 19:27:21,864] {taskinstance.py:1220} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2022-02-12 19:27:21,892] {local_task_job.py:146} INFO - Task exited with return code 0
+
+*** Reading local file: /opt/airflow/logs/marketvol/show_stock_volume/2022-02-12T19:13:37.216701+00:00/1.log
+[2022-02-12 19:27:23,139] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.show_stock_volume 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:23,145] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.show_stock_volume 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:23,145] {taskinstance.py:1042} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:23,145] {taskinstance.py:1043} INFO - Starting attempt 1 of 3
+[2022-02-12 19:27:23,145] {taskinstance.py:1044} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:23,155] {taskinstance.py:1063} INFO - Executing <Task(PythonOperator): show_stock_volume> on 2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:23,157] {standard_task_runner.py:52} INFO - Started process 3003 to run task
+[2022-02-12 19:27:23,163] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'marketvol', 'show_stock_volume', '2022-02-12T19:13:37.216701+00:00', '--job-id', '94', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/daily_stock_data.py', '--cfg-path', '/tmp/tmpgw_7oge3', '--error-file', '/tmp/tmpeaiy20__']
+[2022-02-12 19:27:23,163] {standard_task_runner.py:77} INFO - Job 94: Subtask show_stock_volume
+[2022-02-12 19:27:23,195] {logging_mixin.py:104} INFO - Running <TaskInstance: marketvol.show_stock_volume 2022-02-12T19:13:37.216701+00:00 [running]> on host 5a2017ac663d
+[2022-02-12 19:27:23,219] {taskinstance.py:1255} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=marketvol
+AIRFLOW_CTX_TASK_ID=show_stock_volume
+AIRFLOW_CTX_EXECUTION_DATE=2022-02-12T19:13:37.216701+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:23,591] {python.py:118} INFO - Done. Returned value was: None
+[2022-02-12 19:27:23,595] {taskinstance.py:1159} INFO - Marking task as SUCCESS. dag_id=marketvol, task_id=show_stock_volume, execution_date=20220212T191337, start_date=20220212T192723, end_date=20220212T192723
+[2022-02-12 19:27:23,610] {taskinstance.py:1220} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2022-02-12 19:27:23,662] {local_task_job.py:146} INFO - Task exited with return code 0
+
+*** Reading local file: /opt/airflow/logs/marketvol/download_aapl/2022-02-12T19:13:37.216701+00:00/1.log
+[2022-02-12 19:27:16,220] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.download_aapl 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:16,227] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.download_aapl 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:16,227] {taskinstance.py:1042} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:16,227] {taskinstance.py:1043} INFO - Starting attempt 1 of 3
+[2022-02-12 19:27:16,227] {taskinstance.py:1044} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:16,238] {taskinstance.py:1063} INFO - Executing <Task(PythonOperator): download_aapl> on 2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:16,243] {standard_task_runner.py:52} INFO - Started process 2979 to run task
+[2022-02-12 19:27:16,248] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'marketvol', 'download_aapl', '2022-02-12T19:13:37.216701+00:00', '--job-id', '90', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/daily_stock_data.py', '--cfg-path', '/tmp/tmpiim82iro', '--error-file', '/tmp/tmpn4iilu50']
+[2022-02-12 19:27:16,249] {standard_task_runner.py:77} INFO - Job 90: Subtask download_aapl
+[2022-02-12 19:27:16,283] {logging_mixin.py:104} INFO - Running <TaskInstance: marketvol.download_aapl 2022-02-12T19:13:37.216701+00:00 [running]> on host 5a2017ac663d
+[2022-02-12 19:27:16,308] {taskinstance.py:1255} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=marketvol
+AIRFLOW_CTX_TASK_ID=download_aapl
+AIRFLOW_CTX_EXECUTION_DATE=2022-02-12T19:13:37.216701+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:16,929] {logging_mixin.py:104} INFO - 
+[*********************100%***********************]  1 of 1 completed
+[2022-02-12 19:27:16,929] {logging_mixin.py:104} INFO - 
+[2022-02-12 19:27:16,929] {logging_mixin.py:104} INFO - 
+1 Failed download:
+[2022-02-12 19:27:16,929] {logging_mixin.py:104} INFO - - AAPL: No data found for this date range, symbol may be delisted
+[2022-02-12 19:27:16,931] {python.py:118} INFO - Done. Returned value was: None
+[2022-02-12 19:27:16,936] {taskinstance.py:1159} INFO - Marking task as SUCCESS. dag_id=marketvol, task_id=download_aapl, execution_date=20220212T191337, start_date=20220212T192716, end_date=20220212T192716
+[2022-02-12 19:27:16,960] {taskinstance.py:1220} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2022-02-12 19:27:16,987] {local_task_job.py:146} INFO - Task exited with return code 0
+
+*** Reading local file: /opt/airflow/logs/marketvol/move_aapl/2022-02-12T19:13:37.216701+00:00/1.log
+[2022-02-12 19:27:20,485] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.move_aapl 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:20,490] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.move_aapl 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:20,490] {taskinstance.py:1042} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:20,490] {taskinstance.py:1043} INFO - Starting attempt 1 of 3
+[2022-02-12 19:27:20,490] {taskinstance.py:1044} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:20,500] {taskinstance.py:1063} INFO - Executing <Task(BashOperator): move_aapl> on 2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:20,503] {standard_task_runner.py:52} INFO - Started process 2994 to run task
+[2022-02-12 19:27:20,508] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'marketvol', 'move_aapl', '2022-02-12T19:13:37.216701+00:00', '--job-id', '92', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/daily_stock_data.py', '--cfg-path', '/tmp/tmpl76_szkl', '--error-file', '/tmp/tmpg4moury4']
+[2022-02-12 19:27:20,508] {standard_task_runner.py:77} INFO - Job 92: Subtask move_aapl
+[2022-02-12 19:27:20,541] {logging_mixin.py:104} INFO - Running <TaskInstance: marketvol.move_aapl 2022-02-12T19:13:37.216701+00:00 [running]> on host 5a2017ac663d
+[2022-02-12 19:27:20,569] {taskinstance.py:1255} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=marketvol
+AIRFLOW_CTX_TASK_ID=move_aapl
+AIRFLOW_CTX_EXECUTION_DATE=2022-02-12T19:13:37.216701+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:20,569] {bash.py:135} INFO - Tmp dir root location: 
+ /tmp
+[2022-02-12 19:27:20,570] {bash.py:158} INFO - Running command: 
+    mv /opt/airflow/aapl_data.csv /tmp/data/2022-02-12
+[2022-02-12 19:27:20,576] {bash.py:169} INFO - Output:
+[2022-02-12 19:27:20,580] {bash.py:177} INFO - Command exited with return code 0
+[2022-02-12 19:27:20,596] {taskinstance.py:1159} INFO - Marking task as SUCCESS. dag_id=marketvol, task_id=move_aapl, execution_date=20220212T191337, start_date=20220212T192720, end_date=20220212T192720
+[2022-02-12 19:27:20,615] {taskinstance.py:1220} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2022-02-12 19:27:20,643] {local_task_job.py:146} INFO - Task exited with return code 0
+
+*** Reading local file: /opt/airflow/logs/marketvol/show_stock_volume/2022-02-12T19:13:37.216701+00:00/1.log
+[2022-02-12 19:27:23,139] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.show_stock_volume 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:23,145] {taskinstance.py:851} INFO - Dependencies all met for <TaskInstance: marketvol.show_stock_volume 2022-02-12T19:13:37.216701+00:00 [queued]>
+[2022-02-12 19:27:23,145] {taskinstance.py:1042} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:23,145] {taskinstance.py:1043} INFO - Starting attempt 1 of 3
+[2022-02-12 19:27:23,145] {taskinstance.py:1044} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-12 19:27:23,155] {taskinstance.py:1063} INFO - Executing <Task(PythonOperator): show_stock_volume> on 2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:23,157] {standard_task_runner.py:52} INFO - Started process 3003 to run task
+[2022-02-12 19:27:23,163] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'marketvol', 'show_stock_volume', '2022-02-12T19:13:37.216701+00:00', '--job-id', '94', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/daily_stock_data.py', '--cfg-path', '/tmp/tmpgw_7oge3', '--error-file', '/tmp/tmpeaiy20__']
+[2022-02-12 19:27:23,163] {standard_task_runner.py:77} INFO - Job 94: Subtask show_stock_volume
+[2022-02-12 19:27:23,195] {logging_mixin.py:104} INFO - Running <TaskInstance: marketvol.show_stock_volume 2022-02-12T19:13:37.216701+00:00 [running]> on host 5a2017ac663d
+[2022-02-12 19:27:23,219] {taskinstance.py:1255} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=marketvol
+AIRFLOW_CTX_TASK_ID=show_stock_volume
+AIRFLOW_CTX_EXECUTION_DATE=2022-02-12T19:13:37.216701+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-02-12T19:13:37.216701+00:00
+[2022-02-12 19:27:23,591] {python.py:118} INFO - Done. Returned value was: None
+[2022-02-12 19:27:23,595] {taskinstance.py:1159} INFO - Marking task as SUCCESS. dag_id=marketvol, task_id=show_stock_volume, execution_date=20220212T191337, start_date=20220212T192723, end_date=20220212T192723
+[2022-02-12 19:27:23,610] {taskinstance.py:1220} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2022-02-12 19:27:23,662] {local_task_job.py:146} INFO - Task exited with return code 0
