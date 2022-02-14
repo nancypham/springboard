@@ -39,7 +39,7 @@ def extract_make_key_value(record: list):
 def create_accident_report(file):
     """
     Input: File of all vehicle records
-    Output: Count of vehicles that have been in an accident by make/year
+    Output: Output: A report of the total number of accidents per make and year of the car
     """
     # Step 1: Filter out accident incidents with make and year
     vin_kv = file.map(lambda x: extract_vin_key_value(x))
