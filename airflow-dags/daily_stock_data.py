@@ -11,7 +11,7 @@ today = date.today()
 def download_data(stock):
     import yfinance as yf
         
-    start_date = date.today()
+    start_date = date.today() - timedelta(days=1)
     end_date = start_date + timedelta(days=1)
     df = yf.download(stock, start=start_date, end=end_date, interval='1m')
     df.to_csv(f"{stock}_data.csv", header=True)
@@ -20,9 +20,9 @@ def stock_volume():
     '''Return query for volume from a particular file.'''
     import pandas as pd
 
-    aapl_df = pd.read_csv(f'/tmp/data/{str(today)}/aapl_data.csv')
-    tsla_df = pd.read_csv(f'/tmp/data/{str(today)}/tsla_data.csv')
-    query = [aapl_df['Volume'][0], tsla_df['Volume'][0]]
+    aapl_df = pd.read_csv(f'/tmp/data/{str(today)}/AAPL_data.csv')
+    tsla_df = pd.read_csv(f'/tmp/data/{str(today)}/TSLA_data.csv')
+    query = f"Total volume today for AAPL is {aapl_df['Volume'].sum()} and for TSLA is {tsla_df['Volume'].sum()}"
     return query
 
 # Create Airflow DAG
@@ -54,26 +54,26 @@ with DAG(
     t1 = PythonOperator(
         task_id='download_aapl',
         python_callable=download_data,
-        op_kwargs={'stock':'aapl'}
+        op_kwargs={'stock':'AAPL'}
     )
 
     t2 = PythonOperator(
         task_id='download_tsla',
         python_callable=download_data,
-        op_kwargs={'stock':'tsla'}
+        op_kwargs={'stock':'TSLA'}
     )
 
     # Create BashOperator to move the downloaded file to a data location
     t3 = BashOperator(
         task_id='move_aapl',
         bash_command=move_file_command,
-        params={'csv_name': 'aapl_data.csv', 'final_dest':f'/tmp/data/{str(today)}'}
+        params={'csv_name': '/AAPL_data.csv', 'final_dest':f'/tmp/data/{str(today)}/AAPL_data.csv'}
     )
 
     t4 = BashOperator(
         task_id='move_tsla',
         bash_command=move_file_command,
-        params={'csv_name': '/tsla_data.csv', 'final_dest':f'/tmp/data/{str(today)}'}
+        params={'csv_name': '/TSLA_data.csv', 'final_dest':f'/tmp/data/{str(today)}/TSLA_data.csv'}
     )
 
     # Create a PythonOperator to run a query on both data files in the specified location
