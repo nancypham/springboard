@@ -1,11 +1,13 @@
 # docker-compose.kafka.yml
 version: "3"
+
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+      
   broker:
     image: confluentinc/cp-kafka:latest
     depends_on:
@@ -18,6 +20,6 @@ services:
 
 # NEW
 networks:
-default:
-external:
-name: kafka-network
+  default:
+    external:
+      name: kafka-network
