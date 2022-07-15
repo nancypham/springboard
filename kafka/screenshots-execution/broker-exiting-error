@@ -1,0 +1,601 @@
+"""
+When spinning up the local Kakfa cluster, zookeeper throws this exception which leads to the broker exiting:
+
+zookeeper_1  | [2022-07-15 17:41:57,455] WARN Unexpected exception (org.apache.zookeeper.server.NIOServerCnxn)
+zookeeper_1  | EndOfStreamException: Unable to read additional data from client, it probably closed the socket: address = /172.21.0.3:37892, session = 0x100004079100001
+"""
+
+(base) ➜  kafka git:(kafka) ✗ docker-compose -f docker-compose.kafka.yml up  
+Creating kafka_zookeeper_1 ... done
+Creating kafka_broker_1    ... done
+Attaching to kafka_zookeeper_1, kafka_broker_1
+zookeeper_1  | ===> User
+zookeeper_1  | uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
+zookeeper_1  | ===> Configuring ...
+broker_1     | ===> User
+broker_1     | uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)
+broker_1     | ===> Configuring ...
+zookeeper_1  | ===> Running preflight checks ... 
+zookeeper_1  | ===> Check if /var/lib/zookeeper/data is writable ...
+zookeeper_1  | ===> Check if /var/lib/zookeeper/log is writable ...
+zookeeper_1  | ===> Launching ... 
+zookeeper_1  | ===> Launching zookeeper ... 
+broker_1     | ===> Running preflight checks ... 
+broker_1     | ===> Check if /var/lib/kafka/data is writable ...
+zookeeper_1  | [2022-07-15 17:41:20,173] INFO Reading configuration from: /etc/kafka/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+zookeeper_1  | [2022-07-15 17:41:20,220] INFO clientPortAddress is 0.0.0.0:2181 (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+zookeeper_1  | [2022-07-15 17:41:20,220] INFO secureClientPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+zookeeper_1  | [2022-07-15 17:41:20,221] INFO observerMasterPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+zookeeper_1  | [2022-07-15 17:41:20,221] INFO metricsProvider.className is org.apache.zookeeper.metrics.impl.DefaultMetricsProvider (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+zookeeper_1  | [2022-07-15 17:41:20,230] INFO autopurge.snapRetainCount set to 3 (org.apache.zookeeper.server.DatadirCleanupManager)
+zookeeper_1  | [2022-07-15 17:41:20,230] INFO autopurge.purgeInterval set to 0 (org.apache.zookeeper.server.DatadirCleanupManager)
+zookeeper_1  | [2022-07-15 17:41:20,231] INFO Purge task is not scheduled. (org.apache.zookeeper.server.DatadirCleanupManager)
+zookeeper_1  | [2022-07-15 17:41:20,231] WARN Either no config or no quorum defined in config, running in standalone mode (org.apache.zookeeper.server.quorum.QuorumPeerMain)
+zookeeper_1  | [2022-07-15 17:41:20,235] INFO Log4j 1.2 jmx support not found; jmx disabled. (org.apache.zookeeper.jmx.ManagedUtil)
+zookeeper_1  | [2022-07-15 17:41:20,237] INFO Reading configuration from: /etc/kafka/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+zookeeper_1  | [2022-07-15 17:41:20,238] INFO clientPortAddress is 0.0.0.0:2181 (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+zookeeper_1  | [2022-07-15 17:41:20,238] INFO secureClientPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+zookeeper_1  | [2022-07-15 17:41:20,239] INFO observerMasterPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+zookeeper_1  | [2022-07-15 17:41:20,239] INFO metricsProvider.className is org.apache.zookeeper.metrics.impl.DefaultMetricsProvider (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+zookeeper_1  | [2022-07-15 17:41:20,239] INFO Starting server (org.apache.zookeeper.server.ZooKeeperServerMain)
+zookeeper_1  | [2022-07-15 17:41:20,295] INFO ServerMetrics initialized with provider org.apache.zookeeper.metrics.impl.DefaultMetricsProvider@5f16132a (org.apache.zookeeper.server.ServerMetrics)
+zookeeper_1  | [2022-07-15 17:41:20,306] INFO zookeeper.snapshot.trust.empty : false (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+zookeeper_1  | [2022-07-15 17:41:20,331] INFO  (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,331] INFO   ______                  _                                           (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,331] INFO  |___  /                 | |                                          (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,331] INFO     / /    ___     ___   | | __   ___    ___   _ __     ___   _ __    (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,331] INFO    / /    / _ \   / _ \  | |/ /  / _ \  / _ \ | '_ \   / _ \ | '__| (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,331] INFO   / /__  | (_) | | (_) | |   <  |  __/ |  __/ | |_) | |  __/ | |     (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,331] INFO  /_____|  \___/   \___/  |_|\_\  \___|  \___| | .__/   \___| |_| (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,331] INFO                                               | |                      (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,332] INFO                                               |_|                      (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,332] INFO  (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,335] INFO Server environment:zookeeper.version=3.6.3--6401e4ad2087061bc6b9f80dec2d69f2e3c8660a, built on 04/08/2021 16:35 GMT (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,335] INFO Server environment:host.name=8ccf868eac6c (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,335] INFO Server environment:java.version=11.0.15 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,336] INFO Server environment:java.vendor=Azul Systems, Inc. (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,336] INFO Server environment:java.home=/usr/lib/jvm/zulu11-ca (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,336] INFO Server environment:java.class.path=/usr/bin/../share/java/kafka/plexus-utils-3.3.0.jar:/usr/bin/../share/java/kafka/jetty-servlets-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/trogdor-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/netty-transport-4.1.73.Final.jar:/usr/bin/../share/java/kafka/jline-3.21.0.jar:/usr/bin/../share/java/kafka/kafka-streams-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/connect-mirror-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jetty-client-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/kafka-shell-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/javax.ws.rs-api-2.1.1.jar:/usr/bin/../share/java/kafka/kafka-server-common-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jetty-http-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/commons-cli-1.4.jar:/usr/bin/../share/java/kafka/netty-transport-native-epoll-4.1.73.Final.jar:/usr/bin/../share/java/kafka/kafka-storage-api-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jersey-container-servlet-core-2.34.jar:/usr/bin/../share/java/kafka/paranamer-2.8.jar:/usr/bin/../share/java/kafka/jakarta.inject-2.6.1.jar:/usr/bin/../share/java/kafka/connect-mirror-client-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jackson-jaxrs-base-2.13.2.jar:/usr/bin/../share/java/kafka/hk2-utils-2.6.1.jar:/usr/bin/../share/java/kafka/netty-buffer-4.1.73.Final.jar:/usr/bin/../share/java/kafka/jackson-module-scala_2.13-2.13.2.jar:/usr/bin/../share/java/kafka/jackson-dataformat-csv-2.13.2.jar:/usr/bin/../share/java/kafka/rocksdbjni-6.29.4.1.jar:/usr/bin/../share/java/kafka/connect-transforms-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/kafka-metadata-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/connect-runtime-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jakarta.ws.rs-api-2.1.6.jar:/usr/bin/../share/java/kafka/kafka-streams-scala_2.13-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/connect-json-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/zookeeper-jute-3.6.3.jar:/usr/bin/../share/java/kafka/maven-artifact-3.8.4.jar:/usr/bin/../share/java/kafka/jersey-common-2.34.jar:/usr/bin/../share/java/kafka/netty-transport-classes-epoll-4.1.73.Final.jar:/usr/bin/../share/java/kafka/snappy-java-1.1.8.4.jar:/usr/bin/../share/java/kafka/kafka-clients-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jackson-databind-2.13.2.2.jar:/usr/bin/../share/java/kafka/netty-common-4.1.73.Final.jar:/usr/bin/../share/java/kafka/kafka-streams-examples-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jakarta.annotation-api-1.3.5.jar:/usr/bin/../share/java/kafka/activation-1.1.1.jar:/usr/bin/../share/java/kafka/slf4j-reload4j-1.7.36.jar:/usr/bin/../share/java/kafka/hk2-api-2.6.1.jar:/usr/bin/../share/java/kafka/jackson-datatype-jdk8-2.13.2.jar:/usr/bin/../share/java/kafka/connect-api-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/kafka_2.13-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/netty-handler-4.1.73.Final.jar:/usr/bin/../share/java/kafka/kafka-log4j-appender-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/audience-annotations-0.5.0.jar:/usr/bin/../share/java/kafka/jetty-util-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/reload4j-1.2.19.jar:/usr/bin/../share/java/kafka/metrics-core-2.2.0.jar:/usr/bin/../share/java/kafka/scala-logging_2.13-3.9.4.jar:/usr/bin/../share/java/kafka/kafka.jar:/usr/bin/../share/java/kafka/jetty-io-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/jersey-server-2.34.jar:/usr/bin/../share/java/kafka/kafka-storage-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jackson-module-jaxb-annotations-2.13.2.jar:/usr/bin/../share/java/kafka/jakarta.activation-api-1.2.2.jar:/usr/bin/../share/java/kafka/argparse4j-0.7.0.jar:/usr/bin/../share/java/kafka/jackson-jaxrs-json-provider-2.13.2.jar:/usr/bin/../share/java/kafka/hk2-locator-2.6.1.jar:/usr/bin/../share/java/kafka/netty-resolver-4.1.73.Final.jar:/usr/bin/../share/java/kafka/osgi-resource-locator-1.0.3.jar:/usr/bin/../share/java/kafka/zookeeper-3.6.3.jar:/usr/bin/../share/java/kafka/jetty-servlet-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/jetty-server-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/jetty-util-ajax-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/metrics-core-4.1.12.1.jar:/usr/bin/../share/java/kafka/scala-reflect-2.13.8.jar:/usr/bin/../share/java/kafka/scala-collection-compat_2.13-2.6.0.jar:/usr/bin/../share/java/kafka/jopt-simple-5.0.4.jar:/usr/bin/../share/java/kafka/jersey-client-2.34.jar:/usr/bin/../share/java/kafka/jetty-continuation-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/jose4j-0.7.9.jar:/usr/bin/../share/java/kafka/slf4j-api-1.7.36.jar:/usr/bin/../share/java/kafka/jackson-core-2.13.2.jar:/usr/bin/../share/java/kafka/kafka-tools-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/reflections-0.9.12.jar:/usr/bin/../share/java/kafka/commons-lang3-3.8.1.jar:/usr/bin/../share/java/kafka/jakarta.xml.bind-api-2.3.3.jar:/usr/bin/../share/java/kafka/connect-basic-auth-extension-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/kafka-raft-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/aopalliance-repackaged-2.6.1.jar:/usr/bin/../share/java/kafka/lz4-java-1.8.0.jar:/usr/bin/../share/java/kafka/jersey-hk2-2.34.jar:/usr/bin/../share/java/kafka/javax.servlet-api-3.1.0.jar:/usr/bin/../share/java/kafka/netty-codec-4.1.73.Final.jar:/usr/bin/../share/java/kafka/jakarta.validation-api-2.0.2.jar:/usr/bin/../share/java/kafka/scala-java8-compat_2.13-1.0.2.jar:/usr/bin/../share/java/kafka/kafka-streams-test-utils-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/netty-tcnative-classes-2.0.46.Final.jar:/usr/bin/../share/java/kafka/jersey-container-servlet-2.34.jar:/usr/bin/../share/java/kafka/jetty-security-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/javassist-3.27.0-GA.jar:/usr/bin/../share/java/kafka/jackson-annotations-2.13.2.jar:/usr/bin/../share/java/kafka/jaxb-api-2.3.0.jar:/usr/bin/../share/java/kafka/scala-library-2.13.8.jar:/usr/bin/../share/java/kafka/zstd-jni-1.5.2-1.jar:/usr/bin/../share/java/kafka/netty-transport-native-unix-common-4.1.73.Final.jar:/usr/bin/../share/java/confluent-telemetry/* (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,336] INFO Server environment:java.library.path=/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,337] INFO Server environment:java.io.tmpdir=/tmp (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,337] INFO Server environment:java.compiler=<NA> (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,337] INFO Server environment:os.name=Linux (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,338] INFO Server environment:os.arch=amd64 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,338] INFO Server environment:os.version=5.10.47-linuxkit (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,338] INFO Server environment:user.name=appuser (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,338] INFO Server environment:user.home=/home/appuser (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,338] INFO Server environment:user.dir=/home/appuser (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,339] INFO Server environment:os.memory.free=492MB (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,339] INFO Server environment:os.memory.max=512MB (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,339] INFO Server environment:os.memory.total=512MB (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,339] INFO zookeeper.enableEagerACLCheck = false (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,339] INFO zookeeper.digest.enabled = true (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,340] INFO zookeeper.closeSessionTxn.enabled = true (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,341] INFO zookeeper.flushDelay=0 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,341] INFO zookeeper.maxWriteQueuePollTime=0 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,342] INFO zookeeper.maxBatchSize=1000 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,342] INFO zookeeper.intBufferStartingSizeBytes = 1024 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,345] INFO Weighed connection throttling is disabled (org.apache.zookeeper.server.BlueThrottle)
+zookeeper_1  | [2022-07-15 17:41:20,347] INFO minSessionTimeout set to 4000 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,347] INFO maxSessionTimeout set to 40000 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,350] INFO Response cache size is initialized with value 400. (org.apache.zookeeper.server.ResponseCache)
+zookeeper_1  | [2022-07-15 17:41:20,351] INFO Response cache size is initialized with value 400. (org.apache.zookeeper.server.ResponseCache)
+zookeeper_1  | [2022-07-15 17:41:20,352] INFO zookeeper.pathStats.slotCapacity = 60 (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+zookeeper_1  | [2022-07-15 17:41:20,352] INFO zookeeper.pathStats.slotDuration = 15 (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+zookeeper_1  | [2022-07-15 17:41:20,352] INFO zookeeper.pathStats.maxDepth = 6 (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+zookeeper_1  | [2022-07-15 17:41:20,352] INFO zookeeper.pathStats.initialDelay = 5 (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+zookeeper_1  | [2022-07-15 17:41:20,352] INFO zookeeper.pathStats.delay = 5 (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+zookeeper_1  | [2022-07-15 17:41:20,353] INFO zookeeper.pathStats.enabled = false (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+zookeeper_1  | [2022-07-15 17:41:20,359] INFO The max bytes for all large requests are set to 104857600 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,359] INFO The large request threshold is set to -1 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,359] INFO Created server with tickTime 2000 minSessionTimeout 4000 maxSessionTimeout 40000 clientPortListenBacklog -1 datadir /var/lib/zookeeper/log/version-2 snapdir /var/lib/zookeeper/data/version-2 (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,413] INFO Logging initialized @1466ms to org.eclipse.jetty.util.log.Slf4jLog (org.eclipse.jetty.util.log)
+broker_1     | ===> Check if Zookeeper is healthy ...
+zookeeper_1  | [2022-07-15 17:41:20,579] WARN o.e.j.s.ServletContextHandler@5a5a729f{/,null,STOPPED} contextPath ends with /* (org.eclipse.jetty.server.handler.ContextHandler)
+zookeeper_1  | [2022-07-15 17:41:20,579] WARN Empty contextPath (org.eclipse.jetty.server.handler.ContextHandler)
+zookeeper_1  | [2022-07-15 17:41:20,613] INFO jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 11.0.15+10-LTS (org.eclipse.jetty.server.Server)
+zookeeper_1  | [2022-07-15 17:41:20,668] INFO DefaultSessionIdManager workerName=node0 (org.eclipse.jetty.server.session)
+zookeeper_1  | [2022-07-15 17:41:20,668] INFO No SessionScavenger set, using defaults (org.eclipse.jetty.server.session)
+zookeeper_1  | [2022-07-15 17:41:20,670] INFO node0 Scavenging every 600000ms (org.eclipse.jetty.server.session)
+zookeeper_1  | [2022-07-15 17:41:20,682] WARN ServletContext@o.e.j.s.ServletContextHandler@5a5a729f{/,null,STARTING} has uncovered http methods for path: /* (org.eclipse.jetty.security.SecurityHandler)
+zookeeper_1  | [2022-07-15 17:41:20,709] INFO Started o.e.j.s.ServletContextHandler@5a5a729f{/,null,AVAILABLE} (org.eclipse.jetty.server.handler.ContextHandler)
+zookeeper_1  | [2022-07-15 17:41:20,742] INFO Started ServerConnector@1a75e76a{HTTP/1.1, (http/1.1)}{0.0.0.0:8080} (org.eclipse.jetty.server.AbstractConnector)
+zookeeper_1  | [2022-07-15 17:41:20,743] INFO Started @1797ms (org.eclipse.jetty.server.Server)
+zookeeper_1  | [2022-07-15 17:41:20,743] INFO Started AdminServer on address 0.0.0.0, port 8080 and command URL /commands (org.apache.zookeeper.server.admin.JettyAdminServer)
+zookeeper_1  | [2022-07-15 17:41:20,764] INFO Using org.apache.zookeeper.server.NIOServerCnxnFactory as server connection factory (org.apache.zookeeper.server.ServerCnxnFactory)
+zookeeper_1  | [2022-07-15 17:41:20,768] WARN maxCnxns is not configured, using default value 0. (org.apache.zookeeper.server.ServerCnxnFactory)
+zookeeper_1  | [2022-07-15 17:41:20,772] INFO Configuring NIO connection handler with 10s sessionless connection timeout, 1 selector thread(s), 8 worker threads, and 64 kB direct buffers. (org.apache.zookeeper.server.NIOServerCnxnFactory)
+zookeeper_1  | [2022-07-15 17:41:20,774] INFO binding to port 0.0.0.0/0.0.0.0:2181 (org.apache.zookeeper.server.NIOServerCnxnFactory)
+zookeeper_1  | [2022-07-15 17:41:20,807] INFO Using org.apache.zookeeper.server.watch.WatchManager as watch manager (org.apache.zookeeper.server.watch.WatchManagerFactory)
+zookeeper_1  | [2022-07-15 17:41:20,807] INFO Using org.apache.zookeeper.server.watch.WatchManager as watch manager (org.apache.zookeeper.server.watch.WatchManagerFactory)
+zookeeper_1  | [2022-07-15 17:41:20,809] INFO zookeeper.snapshotSizeFactor = 0.33 (org.apache.zookeeper.server.ZKDatabase)
+zookeeper_1  | [2022-07-15 17:41:20,810] INFO zookeeper.commitLogCount=500 (org.apache.zookeeper.server.ZKDatabase)
+zookeeper_1  | [2022-07-15 17:41:20,820] INFO zookeeper.snapshot.compression.method = CHECKED (org.apache.zookeeper.server.persistence.SnapStream)
+zookeeper_1  | [2022-07-15 17:41:20,820] INFO Snapshotting: 0x0 to /var/lib/zookeeper/data/version-2/snapshot.0 (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+zookeeper_1  | [2022-07-15 17:41:20,825] INFO Snapshot loaded in 15 ms, highest zxid is 0x0, digest is 1371985504 (org.apache.zookeeper.server.ZKDatabase)
+zookeeper_1  | [2022-07-15 17:41:20,825] INFO Snapshotting: 0x0 to /var/lib/zookeeper/data/version-2/snapshot.0 (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+zookeeper_1  | [2022-07-15 17:41:20,826] INFO Snapshot taken in 1 ms (org.apache.zookeeper.server.ZooKeeperServer)
+zookeeper_1  | [2022-07-15 17:41:20,842] INFO PrepRequestProcessor (sid:0) started, reconfigEnabled=false (org.apache.zookeeper.server.PrepRequestProcessor)
+zookeeper_1  | [2022-07-15 17:41:20,844] INFO zookeeper.request_throttler.shutdownTimeout = 10000 (org.apache.zookeeper.server.RequestThrottler)
+zookeeper_1  | [2022-07-15 17:41:20,887] INFO Using checkIntervalMs=60000 maxPerMinute=10000 maxNeverUsedIntervalMs=0 (org.apache.zookeeper.server.ContainerManager)
+zookeeper_1  | [2022-07-15 17:41:20,889] INFO ZooKeeper audit is disabled. (org.apache.zookeeper.audit.ZKAuditProvider)
+broker_1     | SLF4J: Class path contains multiple SLF4J bindings.
+broker_1     | SLF4J: Found binding in [jar:file:/usr/share/java/cp-base-new/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+broker_1     | SLF4J: Found binding in [jar:file:/usr/share/java/cp-base-new/slf4j-simple-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+broker_1     | SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+broker_1     | SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
+broker_1     | 0 [main] DEBUG io.confluent.admin.utils.cli.ZookeeperReadyCommand  - Arguments Namespace(zookeeper_connect=zookeeper:2181, timeout=40000). 
+broker_1     | 10 [main] DEBUG io.confluent.admin.utils.ClusterStatus  - Check if Zookeeper is ready: zookeeper:2181 
+broker_1     | 43 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:zookeeper.version=3.6.3--6401e4ad2087061bc6b9f80dec2d69f2e3c8660a, built on 04/08/2021 16:35 GMT
+broker_1     | 43 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:host.name=7a05ed375cd7
+broker_1     | 43 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:java.version=11.0.15
+broker_1     | 43 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:java.vendor=Azul Systems, Inc.
+broker_1     | 43 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:java.home=/usr/lib/jvm/zulu11-ca
+broker_1     | 44 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:java.class.path=/usr/share/java/cp-base-new/kafka-server-common-7.2.0-ccs.jar:/usr/share/java/cp-base-new/commons-cli-1.4.jar:/usr/share/java/cp-base-new/kafka-storage-api-7.2.0-ccs.jar:/usr/share/java/cp-base-new/jolokia-core-1.7.1.jar:/usr/share/java/cp-base-new/paranamer-2.8.jar:/usr/share/java/cp-base-new/jmx_prometheus_javaagent-0.14.0.jar:/usr/share/java/cp-base-new/json-simple-1.1.1.jar:/usr/share/java/cp-base-new/jackson-dataformat-yaml-2.13.2.jar:/usr/share/java/cp-base-new/jackson-module-scala_2.13-2.13.2.jar:/usr/share/java/cp-base-new/jackson-dataformat-csv-2.13.2.jar:/usr/share/java/cp-base-new/kafka-metadata-7.2.0-ccs.jar:/usr/share/java/cp-base-new/zookeeper-jute-3.6.3.jar:/usr/share/java/cp-base-new/snappy-java-1.1.8.4.jar:/usr/share/java/cp-base-new/kafka-clients-7.2.0-ccs.jar:/usr/share/java/cp-base-new/jackson-databind-2.13.2.2.jar:/usr/share/java/cp-base-new/jolokia-jvm-1.7.1.jar:/usr/share/java/cp-base-new/logredactor-1.0.10.jar:/usr/share/java/cp-base-new/slf4j-reload4j-1.7.36.jar:/usr/share/java/cp-base-new/scala-library-2.13.5.jar:/usr/share/java/cp-base-new/jackson-datatype-jdk8-2.13.2.jar:/usr/share/java/cp-base-new/kafka_2.13-7.2.0-ccs.jar:/usr/share/java/cp-base-new/audience-annotations-0.5.0.jar:/usr/share/java/cp-base-new/reload4j-1.2.19.jar:/usr/share/java/cp-base-new/metrics-core-2.2.0.jar:/usr/share/java/cp-base-new/scala-logging_2.13-3.9.4.jar:/usr/share/java/cp-base-new/utility-belt-7.2.0.jar:/usr/share/java/cp-base-new/snakeyaml-1.30.jar:/usr/share/java/cp-base-new/slf4j-simple-1.7.36.jar:/usr/share/java/cp-base-new/kafka-storage-7.2.0-ccs.jar:/usr/share/java/cp-base-new/re2j-1.6.jar:/usr/share/java/cp-base-new/argparse4j-0.7.0.jar:/usr/share/java/cp-base-new/zookeeper-3.6.3.jar:/usr/share/java/cp-base-new/metrics-core-4.1.12.1.jar:/usr/share/java/cp-base-new/scala-collection-compat_2.13-2.6.0.jar:/usr/share/java/cp-base-new/jopt-simple-5.0.4.jar:/usr/share/java/cp-base-new/jose4j-0.7.9.jar:/usr/share/java/cp-base-new/gson-2.9.0.jar:/usr/share/java/cp-base-new/slf4j-api-1.7.36.jar:/usr/share/java/cp-base-new/jackson-core-2.13.2.jar:/usr/share/java/cp-base-new/minimal-json-0.9.5.jar:/usr/share/java/cp-base-new/scala-reflect-2.13.5.jar:/usr/share/java/cp-base-new/kafka-raft-7.2.0-ccs.jar:/usr/share/java/cp-base-new/lz4-java-1.8.0.jar:/usr/share/java/cp-base-new/disk-usage-agent-7.2.0.jar:/usr/share/java/cp-base-new/scala-java8-compat_2.13-1.0.2.jar:/usr/share/java/cp-base-new/jackson-annotations-2.13.2.jar:/usr/share/java/cp-base-new/zstd-jni-1.5.2-1.jar:/usr/share/java/cp-base-new/logredactor-metrics-1.0.10.jar:/usr/share/java/cp-base-new/common-utils-7.2.0.jar
+broker_1     | 44 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:java.library.path=/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+broker_1     | 44 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:java.io.tmpdir=/tmp
+broker_1     | 44 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:java.compiler=<NA>
+broker_1     | 44 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:os.name=Linux
+broker_1     | 44 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:os.arch=amd64
+broker_1     | 44 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:os.version=5.10.47-linuxkit
+broker_1     | 44 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:user.name=appuser
+broker_1     | 45 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:user.home=/home/appuser
+broker_1     | 45 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:user.dir=/home/appuser
+broker_1     | 45 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:os.memory.free=24MB
+broker_1     | 45 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:os.memory.max=498MB
+broker_1     | 45 [main] INFO org.apache.zookeeper.ZooKeeper  - Client environment:os.memory.total=32MB
+broker_1     | 50 [main] INFO org.apache.zookeeper.ZooKeeper  - Initiating client connection, connectString=zookeeper:2181 sessionTimeout=40000 watcher=io.confluent.admin.utils.ZookeeperConnectionWatcher@396e2f39
+broker_1     | 60 [main] INFO org.apache.zookeeper.common.X509Util  - Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation
+broker_1     | 72 [main] INFO org.apache.zookeeper.ClientCnxnSocket  - jute.maxbuffer value is 1048575 Bytes
+broker_1     | 82 [main] INFO org.apache.zookeeper.ClientCnxn  - zookeeper.request.timeout value is 0. feature enabled=false
+broker_1     | 122 [main-SendThread(zookeeper:2181)] DEBUG org.apache.zookeeper.SaslServerPrincipal  - Canonicalized address to kafka_zookeeper_1.kafka-network
+broker_1     | 128 [main-SendThread(zookeeper:2181)] INFO org.apache.zookeeper.ClientCnxn  - Opening socket connection to server zookeeper/172.21.0.2:2181.
+broker_1     | 128 [main-SendThread(zookeeper:2181)] INFO org.apache.zookeeper.ClientCnxn  - SASL config status: Will not attempt to authenticate using SASL (unknown error)
+broker_1     | 147 [main-SendThread(zookeeper:2181)] INFO org.apache.zookeeper.ClientCnxn  - Socket connection established, initiating session, client: /172.21.0.3:37890, server: zookeeper/172.21.0.2:2181
+broker_1     | 154 [main-SendThread(zookeeper:2181)] DEBUG org.apache.zookeeper.ClientCnxn  - Session establishment request sent on zookeeper/172.21.0.2:2181
+zookeeper_1  | [2022-07-15 17:41:21,852] INFO Creating new log file: log.1 (org.apache.zookeeper.server.persistence.FileTxnLog)
+broker_1     | 210 [main-SendThread(zookeeper:2181)] INFO org.apache.zookeeper.ClientCnxn  - Session establishment complete on server zookeeper/172.21.0.2:2181, session id = 0x100004079100000, negotiated timeout = 40000
+broker_1     | 226 [main] DEBUG org.apache.zookeeper.ZooKeeper  - Closing session: 0x100004079100000
+broker_1     | 226 [main] DEBUG org.apache.zookeeper.ClientCnxn  - Closing client for session: 0x100004079100000
+broker_1     | 240 [main-SendThread(zookeeper:2181)] DEBUG org.apache.zookeeper.ClientCnxn  - Reading reply session id: 0x100004079100000, packet:: clientPath:null serverPath:null finished:false header:: 1,-11  replyHeader:: 1,2,0  request:: null response:: null
+broker_1     | 242 [main-SendThread(zookeeper:2181)] WARN org.apache.zookeeper.ClientCnxn  - An exception was thrown while closing send thread for session 0x100004079100000.
+broker_1     | EndOfStreamException: Unable to read additional data from server sessionid 0x100004079100000, likely server has closed socket
+broker_1     | 	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:77)
+broker_1     | 	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+broker_1     | 	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1290)
+broker_1     | 246 [main] DEBUG org.apache.zookeeper.ClientCnxn  - Disconnecting client for session: 0x100004079100000
+broker_1     | 353 [main] INFO org.apache.zookeeper.ZooKeeper  - Session: 0x100004079100000 closed
+broker_1     | 353 [main-EventThread] INFO org.apache.zookeeper.ClientCnxn  - EventThread shut down for session: 0x100004079100000
+broker_1     | ===> Launching ... 
+broker_1     | ===> Launching kafka ... 
+broker_1     | [2022-07-15 17:41:23,500] INFO Registered kafka:type=kafka.Log4jController MBean (kafka.utils.Log4jControllerRegistration$)
+broker_1     | [2022-07-15 17:41:24,108] INFO Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation (org.apache.zookeeper.common.X509Util)
+broker_1     | [2022-07-15 17:41:24,232] INFO Registered signal handlers for TERM, INT, HUP (org.apache.kafka.common.utils.LoggingSignalHandler)
+broker_1     | [2022-07-15 17:41:24,236] INFO starting (kafka.server.KafkaServer)
+broker_1     | [2022-07-15 17:41:24,238] INFO Connecting to zookeeper on zookeeper:2181 (kafka.server.KafkaServer)
+broker_1     | [2022-07-15 17:41:24,261] INFO [ZooKeeperClient Kafka server] Initializing a new session to zookeeper:2181. (kafka.zookeeper.ZooKeeperClient)
+broker_1     | [2022-07-15 17:41:24,271] INFO Client environment:zookeeper.version=3.6.3--6401e4ad2087061bc6b9f80dec2d69f2e3c8660a, built on 04/08/2021 16:35 GMT (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,271] INFO Client environment:host.name=7a05ed375cd7 (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,271] INFO Client environment:java.version=11.0.15 (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,271] INFO Client environment:java.vendor=Azul Systems, Inc. (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,271] INFO Client environment:java.home=/usr/lib/jvm/zulu11-ca (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,271] INFO Client environment:java.class.path=/usr/bin/../share/java/kafka/plexus-utils-3.3.0.jar:/usr/bin/../share/java/kafka/jetty-servlets-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/trogdor-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/netty-transport-4.1.73.Final.jar:/usr/bin/../share/java/kafka/jline-3.21.0.jar:/usr/bin/../share/java/kafka/kafka-streams-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/connect-mirror-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jetty-client-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/kafka-shell-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/javax.ws.rs-api-2.1.1.jar:/usr/bin/../share/java/kafka/kafka-server-common-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jetty-http-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/commons-cli-1.4.jar:/usr/bin/../share/java/kafka/netty-transport-native-epoll-4.1.73.Final.jar:/usr/bin/../share/java/kafka/kafka-storage-api-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jersey-container-servlet-core-2.34.jar:/usr/bin/../share/java/kafka/paranamer-2.8.jar:/usr/bin/../share/java/kafka/jakarta.inject-2.6.1.jar:/usr/bin/../share/java/kafka/connect-mirror-client-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jackson-jaxrs-base-2.13.2.jar:/usr/bin/../share/java/kafka/hk2-utils-2.6.1.jar:/usr/bin/../share/java/kafka/netty-buffer-4.1.73.Final.jar:/usr/bin/../share/java/kafka/jackson-module-scala_2.13-2.13.2.jar:/usr/bin/../share/java/kafka/jackson-dataformat-csv-2.13.2.jar:/usr/bin/../share/java/kafka/rocksdbjni-6.29.4.1.jar:/usr/bin/../share/java/kafka/connect-transforms-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/kafka-metadata-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/connect-runtime-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jakarta.ws.rs-api-2.1.6.jar:/usr/bin/../share/java/kafka/kafka-streams-scala_2.13-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/connect-json-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/zookeeper-jute-3.6.3.jar:/usr/bin/../share/java/kafka/maven-artifact-3.8.4.jar:/usr/bin/../share/java/kafka/jersey-common-2.34.jar:/usr/bin/../share/java/kafka/netty-transport-classes-epoll-4.1.73.Final.jar:/usr/bin/../share/java/kafka/snappy-java-1.1.8.4.jar:/usr/bin/../share/java/kafka/kafka-clients-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jackson-databind-2.13.2.2.jar:/usr/bin/../share/java/kafka/netty-common-4.1.73.Final.jar:/usr/bin/../share/java/kafka/kafka-streams-examples-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jakarta.annotation-api-1.3.5.jar:/usr/bin/../share/java/kafka/activation-1.1.1.jar:/usr/bin/../share/java/kafka/slf4j-reload4j-1.7.36.jar:/usr/bin/../share/java/kafka/hk2-api-2.6.1.jar:/usr/bin/../share/java/kafka/jackson-datatype-jdk8-2.13.2.jar:/usr/bin/../share/java/kafka/connect-api-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/kafka_2.13-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/netty-handler-4.1.73.Final.jar:/usr/bin/../share/java/kafka/kafka-log4j-appender-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/audience-annotations-0.5.0.jar:/usr/bin/../share/java/kafka/jetty-util-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/reload4j-1.2.19.jar:/usr/bin/../share/java/kafka/metrics-core-2.2.0.jar:/usr/bin/../share/java/kafka/scala-logging_2.13-3.9.4.jar:/usr/bin/../share/java/kafka/kafka.jar:/usr/bin/../share/java/kafka/jetty-io-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/jersey-server-2.34.jar:/usr/bin/../share/java/kafka/kafka-storage-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/jackson-module-jaxb-annotations-2.13.2.jar:/usr/bin/../share/java/kafka/jakarta.activation-api-1.2.2.jar:/usr/bin/../share/java/kafka/argparse4j-0.7.0.jar:/usr/bin/../share/java/kafka/jackson-jaxrs-json-provider-2.13.2.jar:/usr/bin/../share/java/kafka/hk2-locator-2.6.1.jar:/usr/bin/../share/java/kafka/netty-resolver-4.1.73.Final.jar:/usr/bin/../share/java/kafka/osgi-resource-locator-1.0.3.jar:/usr/bin/../share/java/kafka/zookeeper-3.6.3.jar:/usr/bin/../share/java/kafka/jetty-servlet-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/jetty-server-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/jetty-util-ajax-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/metrics-core-4.1.12.1.jar:/usr/bin/../share/java/kafka/scala-reflect-2.13.8.jar:/usr/bin/../share/java/kafka/scala-collection-compat_2.13-2.6.0.jar:/usr/bin/../share/java/kafka/jopt-simple-5.0.4.jar:/usr/bin/../share/java/kafka/jersey-client-2.34.jar:/usr/bin/../share/java/kafka/jetty-continuation-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/jose4j-0.7.9.jar:/usr/bin/../share/java/kafka/slf4j-api-1.7.36.jar:/usr/bin/../share/java/kafka/jackson-core-2.13.2.jar:/usr/bin/../share/java/kafka/kafka-tools-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/reflections-0.9.12.jar:/usr/bin/../share/java/kafka/commons-lang3-3.8.1.jar:/usr/bin/../share/java/kafka/jakarta.xml.bind-api-2.3.3.jar:/usr/bin/../share/java/kafka/connect-basic-auth-extension-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/kafka-raft-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/aopalliance-repackaged-2.6.1.jar:/usr/bin/../share/java/kafka/lz4-java-1.8.0.jar:/usr/bin/../share/java/kafka/jersey-hk2-2.34.jar:/usr/bin/../share/java/kafka/javax.servlet-api-3.1.0.jar:/usr/bin/../share/java/kafka/netty-codec-4.1.73.Final.jar:/usr/bin/../share/java/kafka/jakarta.validation-api-2.0.2.jar:/usr/bin/../share/java/kafka/scala-java8-compat_2.13-1.0.2.jar:/usr/bin/../share/java/kafka/kafka-streams-test-utils-7.2.0-ccs.jar:/usr/bin/../share/java/kafka/netty-tcnative-classes-2.0.46.Final.jar:/usr/bin/../share/java/kafka/jersey-container-servlet-2.34.jar:/usr/bin/../share/java/kafka/jetty-security-9.4.44.v20210927.jar:/usr/bin/../share/java/kafka/javassist-3.27.0-GA.jar:/usr/bin/../share/java/kafka/jackson-annotations-2.13.2.jar:/usr/bin/../share/java/kafka/jaxb-api-2.3.0.jar:/usr/bin/../share/java/kafka/scala-library-2.13.8.jar:/usr/bin/../share/java/kafka/zstd-jni-1.5.2-1.jar:/usr/bin/../share/java/kafka/netty-transport-native-unix-common-4.1.73.Final.jar:/usr/bin/../share/java/confluent-telemetry/* (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,272] INFO Client environment:java.library.path=/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,272] INFO Client environment:java.io.tmpdir=/tmp (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,272] INFO Client environment:java.compiler=<NA> (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,272] INFO Client environment:os.name=Linux (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,272] INFO Client environment:os.arch=amd64 (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,273] INFO Client environment:os.version=5.10.47-linuxkit (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,273] INFO Client environment:user.name=appuser (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,273] INFO Client environment:user.home=/home/appuser (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,273] INFO Client environment:user.dir=/home/appuser (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,273] INFO Client environment:os.memory.free=1008MB (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,273] INFO Client environment:os.memory.max=1024MB (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,274] INFO Client environment:os.memory.total=1024MB (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,278] INFO Initiating client connection, connectString=zookeeper:2181 sessionTimeout=18000 watcher=kafka.zookeeper.ZooKeeperClient$ZooKeeperClientWatcher$@54dcfa5a (org.apache.zookeeper.ZooKeeper)
+broker_1     | [2022-07-15 17:41:24,287] INFO jute.maxbuffer value is 4194304 Bytes (org.apache.zookeeper.ClientCnxnSocket)
+broker_1     | [2022-07-15 17:41:24,295] INFO zookeeper.request.timeout value is 0. feature enabled=false (org.apache.zookeeper.ClientCnxn)
+broker_1     | [2022-07-15 17:41:24,303] INFO [ZooKeeperClient Kafka server] Waiting until connected. (kafka.zookeeper.ZooKeeperClient)
+broker_1     | [2022-07-15 17:41:24,309] INFO Opening socket connection to server zookeeper/172.21.0.2:2181. (org.apache.zookeeper.ClientCnxn)
+broker_1     | [2022-07-15 17:41:24,319] INFO Socket connection established, initiating session, client: /172.21.0.3:37892, server: zookeeper/172.21.0.2:2181 (org.apache.zookeeper.ClientCnxn)
+broker_1     | [2022-07-15 17:41:24,342] INFO Session establishment complete on server zookeeper/172.21.0.2:2181, session id = 0x100004079100001, negotiated timeout = 18000 (org.apache.zookeeper.ClientCnxn)
+broker_1     | [2022-07-15 17:41:24,349] INFO [ZooKeeperClient Kafka server] Connected. (kafka.zookeeper.ZooKeeperClient)
+broker_1     | [2022-07-15 17:41:24,685] INFO [feature-zk-node-event-process-thread]: Starting (kafka.server.FinalizedFeatureChangeListener$ChangeNotificationProcessorThread)
+broker_1     | [2022-07-15 17:41:24,709] INFO Feature ZK node at path: /feature does not exist (kafka.server.FinalizedFeatureChangeListener)
+broker_1     | [2022-07-15 17:41:24,710] INFO Cleared cache (kafka.server.FinalizedFeatureCache)
+broker_1     | [2022-07-15 17:41:25,004] INFO Cluster ID = 8nvLpnykTPukOn9MJbZfLQ (kafka.server.KafkaServer)
+broker_1     | [2022-07-15 17:41:25,010] WARN No meta.properties file under dir /var/lib/kafka/data/meta.properties (kafka.server.BrokerMetadataCheckpoint)
+broker_1     | [2022-07-15 17:41:25,085] INFO KafkaConfig values: 
+broker_1     | 	advertised.listeners = PLAINTEXT://broker:9092
+broker_1     | 	alter.config.policy.class.name = null
+broker_1     | 	alter.log.dirs.replication.quota.window.num = 11
+broker_1     | 	alter.log.dirs.replication.quota.window.size.seconds = 1
+broker_1     | 	authorizer.class.name = 
+broker_1     | 	auto.create.topics.enable = true
+broker_1     | 	auto.leader.rebalance.enable = true
+broker_1     | 	background.threads = 10
+broker_1     | 	broker.heartbeat.interval.ms = 2000
+broker_1     | 	broker.id = 1
+broker_1     | 	broker.id.generation.enable = true
+broker_1     | 	broker.rack = null
+broker_1     | 	broker.session.timeout.ms = 9000
+broker_1     | 	client.quota.callback.class = null
+broker_1     | 	compression.type = producer
+broker_1     | 	connection.failed.authentication.delay.ms = 100
+broker_1     | 	connections.max.idle.ms = 600000
+broker_1     | 	connections.max.reauth.ms = 0
+broker_1     | 	control.plane.listener.name = null
+broker_1     | 	controlled.shutdown.enable = true
+broker_1     | 	controlled.shutdown.max.retries = 3
+broker_1     | 	controlled.shutdown.retry.backoff.ms = 5000
+broker_1     | 	controller.listener.names = null
+broker_1     | 	controller.quorum.append.linger.ms = 25
+broker_1     | 	controller.quorum.election.backoff.max.ms = 1000
+broker_1     | 	controller.quorum.election.timeout.ms = 1000
+broker_1     | 	controller.quorum.fetch.timeout.ms = 2000
+broker_1     | 	controller.quorum.request.timeout.ms = 2000
+broker_1     | 	controller.quorum.retry.backoff.ms = 20
+broker_1     | 	controller.quorum.voters = []
+broker_1     | 	controller.quota.window.num = 11
+broker_1     | 	controller.quota.window.size.seconds = 1
+broker_1     | 	controller.socket.timeout.ms = 30000
+broker_1     | 	create.topic.policy.class.name = null
+broker_1     | 	default.replication.factor = 1
+broker_1     | 	delegation.token.expiry.check.interval.ms = 3600000
+broker_1     | 	delegation.token.expiry.time.ms = 86400000
+broker_1     | 	delegation.token.master.key = null
+broker_1     | 	delegation.token.max.lifetime.ms = 604800000
+broker_1     | 	delegation.token.secret.key = null
+broker_1     | 	delete.records.purgatory.purge.interval.requests = 1
+broker_1     | 	delete.topic.enable = true
+broker_1     | 	fetch.max.bytes = 57671680
+broker_1     | 	fetch.purgatory.purge.interval.requests = 1000
+broker_1     | 	group.initial.rebalance.delay.ms = 3000
+broker_1     | 	group.max.session.timeout.ms = 1800000
+broker_1     | 	group.max.size = 2147483647
+broker_1     | 	group.min.session.timeout.ms = 6000
+broker_1     | 	initial.broker.registration.timeout.ms = 60000
+broker_1     | 	inter.broker.listener.name = null
+broker_1     | 	inter.broker.protocol.version = 3.2-IV0
+broker_1     | 	kafka.metrics.polling.interval.secs = 10
+broker_1     | 	kafka.metrics.reporters = []
+broker_1     | 	leader.imbalance.check.interval.seconds = 300
+broker_1     | 	leader.imbalance.per.broker.percentage = 10
+broker_1     | 	listener.security.protocol.map = PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
+broker_1     | 	listeners = PLAINTEXT://0.0.0.0:9092
+broker_1     | 	log.cleaner.backoff.ms = 15000
+broker_1     | 	log.cleaner.dedupe.buffer.size = 134217728
+broker_1     | 	log.cleaner.delete.retention.ms = 86400000
+broker_1     | 	log.cleaner.enable = true
+broker_1     | 	log.cleaner.io.buffer.load.factor = 0.9
+broker_1     | 	log.cleaner.io.buffer.size = 524288
+broker_1     | 	log.cleaner.io.max.bytes.per.second = 1.7976931348623157E308
+broker_1     | 	log.cleaner.max.compaction.lag.ms = 9223372036854775807
+broker_1     | 	log.cleaner.min.cleanable.ratio = 0.5
+broker_1     | 	log.cleaner.min.compaction.lag.ms = 0
+broker_1     | 	log.cleaner.threads = 1
+broker_1     | 	log.cleanup.policy = [delete]
+broker_1     | 	log.dir = /tmp/kafka-logs
+broker_1     | 	log.dirs = /var/lib/kafka/data
+broker_1     | 	log.flush.interval.messages = 9223372036854775807
+broker_1     | 	log.flush.interval.ms = null
+broker_1     | 	log.flush.offset.checkpoint.interval.ms = 60000
+broker_1     | 	log.flush.scheduler.interval.ms = 9223372036854775807
+broker_1     | 	log.flush.start.offset.checkpoint.interval.ms = 60000
+broker_1     | 	log.index.interval.bytes = 4096
+broker_1     | 	log.index.size.max.bytes = 10485760
+broker_1     | 	log.message.downconversion.enable = true
+broker_1     | 	log.message.format.version = 3.0-IV1
+broker_1     | 	log.message.timestamp.difference.max.ms = 9223372036854775807
+broker_1     | 	log.message.timestamp.type = CreateTime
+broker_1     | 	log.preallocate = false
+broker_1     | 	log.retention.bytes = -1
+broker_1     | 	log.retention.check.interval.ms = 300000
+broker_1     | 	log.retention.hours = 168
+broker_1     | 	log.retention.minutes = null
+broker_1     | 	log.retention.ms = null
+broker_1     | 	log.roll.hours = 168
+broker_1     | 	log.roll.jitter.hours = 0
+broker_1     | 	log.roll.jitter.ms = null
+broker_1     | 	log.roll.ms = null
+broker_1     | 	log.segment.bytes = 1073741824
+broker_1     | 	log.segment.delete.delay.ms = 60000
+broker_1     | 	max.connection.creation.rate = 2147483647
+broker_1     | 	max.connections = 2147483647
+broker_1     | 	max.connections.per.ip = 2147483647
+broker_1     | 	max.connections.per.ip.overrides = 
+broker_1     | 	max.incremental.fetch.session.cache.slots = 1000
+broker_1     | 	message.max.bytes = 1048588
+broker_1     | 	metadata.log.dir = null
+broker_1     | 	metadata.log.max.record.bytes.between.snapshots = 20971520
+broker_1     | 	metadata.log.segment.bytes = 1073741824
+broker_1     | 	metadata.log.segment.min.bytes = 8388608
+broker_1     | 	metadata.log.segment.ms = 604800000
+broker_1     | 	metadata.max.retention.bytes = -1
+broker_1     | 	metadata.max.retention.ms = 604800000
+broker_1     | 	metric.reporters = []
+broker_1     | 	metrics.num.samples = 2
+broker_1     | 	metrics.recording.level = INFO
+broker_1     | 	metrics.sample.window.ms = 30000
+broker_1     | 	min.insync.replicas = 1
+broker_1     | 	node.id = 1
+broker_1     | 	num.io.threads = 8
+broker_1     | 	num.network.threads = 3
+broker_1     | 	num.partitions = 1
+broker_1     | 	num.recovery.threads.per.data.dir = 1
+broker_1     | 	num.replica.alter.log.dirs.threads = null
+broker_1     | 	num.replica.fetchers = 1
+broker_1     | 	offset.metadata.max.bytes = 4096
+broker_1     | 	offsets.commit.required.acks = -1
+broker_1     | 	offsets.commit.timeout.ms = 5000
+broker_1     | 	offsets.load.buffer.size = 5242880
+broker_1     | 	offsets.retention.check.interval.ms = 600000
+broker_1     | 	offsets.retention.minutes = 10080
+broker_1     | 	offsets.topic.compression.codec = 0
+broker_1     | 	offsets.topic.num.partitions = 50
+broker_1     | 	offsets.topic.replication.factor = 1
+broker_1     | 	offsets.topic.segment.bytes = 104857600
+broker_1     | 	password.encoder.cipher.algorithm = AES/CBC/PKCS5Padding
+broker_1     | 	password.encoder.iterations = 4096
+broker_1     | 	password.encoder.key.length = 128
+broker_1     | 	password.encoder.keyfactory.algorithm = null
+broker_1     | 	password.encoder.old.secret = null
+broker_1     | 	password.encoder.secret = null
+broker_1     | 	principal.builder.class = class org.apache.kafka.common.security.authenticator.DefaultKafkaPrincipalBuilder
+broker_1     | 	process.roles = []
+broker_1     | 	producer.purgatory.purge.interval.requests = 1000
+broker_1     | 	queued.max.request.bytes = -1
+broker_1     | 	queued.max.requests = 500
+broker_1     | 	quota.window.num = 11
+broker_1     | 	quota.window.size.seconds = 1
+broker_1     | 	remote.log.index.file.cache.total.size.bytes = 1073741824
+broker_1     | 	remote.log.manager.task.interval.ms = 30000
+broker_1     | 	remote.log.manager.task.retry.backoff.max.ms = 30000
+broker_1     | 	remote.log.manager.task.retry.backoff.ms = 500
+broker_1     | 	remote.log.manager.task.retry.jitter = 0.2
+broker_1     | 	remote.log.manager.thread.pool.size = 10
+broker_1     | 	remote.log.metadata.manager.class.name = null
+broker_1     | 	remote.log.metadata.manager.class.path = null
+broker_1     | 	remote.log.metadata.manager.impl.prefix = null
+broker_1     | 	remote.log.metadata.manager.listener.name = null
+broker_1     | 	remote.log.reader.max.pending.tasks = 100
+broker_1     | 	remote.log.reader.threads = 10
+broker_1     | 	remote.log.storage.manager.class.name = null
+broker_1     | 	remote.log.storage.manager.class.path = null
+broker_1     | 	remote.log.storage.manager.impl.prefix = null
+broker_1     | 	remote.log.storage.system.enable = false
+broker_1     | 	replica.fetch.backoff.ms = 1000
+broker_1     | 	replica.fetch.max.bytes = 1048576
+broker_1     | 	replica.fetch.min.bytes = 1
+broker_1     | 	replica.fetch.response.max.bytes = 10485760
+broker_1     | 	replica.fetch.wait.max.ms = 500
+broker_1     | 	replica.high.watermark.checkpoint.interval.ms = 5000
+broker_1     | 	replica.lag.time.max.ms = 30000
+broker_1     | 	replica.selector.class = null
+broker_1     | 	replica.socket.receive.buffer.bytes = 65536
+broker_1     | 	replica.socket.timeout.ms = 30000
+broker_1     | 	replication.quota.window.num = 11
+broker_1     | 	replication.quota.window.size.seconds = 1
+broker_1     | 	request.timeout.ms = 30000
+broker_1     | 	reserved.broker.max.id = 1000
+broker_1     | 	sasl.client.callback.handler.class = null
+broker_1     | 	sasl.enabled.mechanisms = [GSSAPI]
+broker_1     | 	sasl.jaas.config = null
+broker_1     | 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+broker_1     | 	sasl.kerberos.min.time.before.relogin = 60000
+broker_1     | 	sasl.kerberos.principal.to.local.rules = [DEFAULT]
+broker_1     | 	sasl.kerberos.service.name = null
+broker_1     | 	sasl.kerberos.ticket.renew.jitter = 0.05
+broker_1     | 	sasl.kerberos.ticket.renew.window.factor = 0.8
+broker_1     | 	sasl.login.callback.handler.class = null
+broker_1     | 	sasl.login.class = null
+broker_1     | 	sasl.login.connect.timeout.ms = null
+broker_1     | 	sasl.login.read.timeout.ms = null
+broker_1     | 	sasl.login.refresh.buffer.seconds = 300
+broker_1     | 	sasl.login.refresh.min.period.seconds = 60
+broker_1     | 	sasl.login.refresh.window.factor = 0.8
+broker_1     | 	sasl.login.refresh.window.jitter = 0.05
+broker_1     | 	sasl.login.retry.backoff.max.ms = 10000
+broker_1     | 	sasl.login.retry.backoff.ms = 100
+broker_1     | 	sasl.mechanism.controller.protocol = GSSAPI
+broker_1     | 	sasl.mechanism.inter.broker.protocol = GSSAPI
+broker_1     | 	sasl.oauthbearer.clock.skew.seconds = 30
+broker_1     | 	sasl.oauthbearer.expected.audience = null
+broker_1     | 	sasl.oauthbearer.expected.issuer = null
+broker_1     | 	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+broker_1     | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+broker_1     | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+broker_1     | 	sasl.oauthbearer.jwks.endpoint.url = null
+broker_1     | 	sasl.oauthbearer.scope.claim.name = scope
+broker_1     | 	sasl.oauthbearer.sub.claim.name = sub
+broker_1     | 	sasl.oauthbearer.token.endpoint.url = null
+broker_1     | 	sasl.server.callback.handler.class = null
+broker_1     | 	security.inter.broker.protocol = PLAINTEXT
+broker_1     | 	security.providers = null
+broker_1     | 	socket.connection.setup.timeout.max.ms = 30000
+broker_1     | 	socket.connection.setup.timeout.ms = 10000
+broker_1     | 	socket.listen.backlog.size = 50
+broker_1     | 	socket.receive.buffer.bytes = 102400
+broker_1     | 	socket.request.max.bytes = 104857600
+broker_1     | 	socket.send.buffer.bytes = 102400
+broker_1     | 	ssl.cipher.suites = []
+broker_1     | 	ssl.client.auth = none
+broker_1     | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+broker_1     | 	ssl.endpoint.identification.algorithm = https
+broker_1     | 	ssl.engine.factory.class = null
+broker_1     | 	ssl.key.password = null
+broker_1     | 	ssl.keymanager.algorithm = SunX509
+broker_1     | 	ssl.keystore.certificate.chain = null
+broker_1     | 	ssl.keystore.key = null
+broker_1     | 	ssl.keystore.location = null
+broker_1     | 	ssl.keystore.password = null
+broker_1     | 	ssl.keystore.type = JKS
+broker_1     | 	ssl.principal.mapping.rules = DEFAULT
+broker_1     | 	ssl.protocol = TLSv1.3
+broker_1     | 	ssl.provider = null
+broker_1     | 	ssl.secure.random.implementation = null
+broker_1     | 	ssl.trustmanager.algorithm = PKIX
+broker_1     | 	ssl.truststore.certificates = null
+broker_1     | 	ssl.truststore.location = null
+broker_1     | 	ssl.truststore.password = null
+broker_1     | 	ssl.truststore.type = JKS
+broker_1     | 	transaction.abort.timed.out.transaction.cleanup.interval.ms = 10000
+broker_1     | 	transaction.max.timeout.ms = 900000
+broker_1     | 	transaction.remove.expired.transaction.cleanup.interval.ms = 3600000
+broker_1     | 	transaction.state.log.load.buffer.size = 5242880
+broker_1     | 	transaction.state.log.min.isr = 2
+broker_1     | 	transaction.state.log.num.partitions = 50
+broker_1     | 	transaction.state.log.replication.factor = 3
+broker_1     | 	transaction.state.log.segment.bytes = 104857600
+broker_1     | 	transactional.id.expiration.ms = 604800000
+broker_1     | 	unclean.leader.election.enable = false
+broker_1     | 	zookeeper.clientCnxnSocket = null
+broker_1     | 	zookeeper.connect = zookeeper:2181
+broker_1     | 	zookeeper.connection.timeout.ms = null
+broker_1     | 	zookeeper.max.in.flight.requests = 10
+broker_1     | 	zookeeper.session.timeout.ms = 18000
+broker_1     | 	zookeeper.set.acl = false
+broker_1     | 	zookeeper.ssl.cipher.suites = null
+broker_1     | 	zookeeper.ssl.client.enable = false
+broker_1     | 	zookeeper.ssl.crl.enable = false
+broker_1     | 	zookeeper.ssl.enabled.protocols = null
+broker_1     | 	zookeeper.ssl.endpoint.identification.algorithm = HTTPS
+broker_1     | 	zookeeper.ssl.keystore.location = null
+broker_1     | 	zookeeper.ssl.keystore.password = null
+broker_1     | 	zookeeper.ssl.keystore.type = null
+broker_1     | 	zookeeper.ssl.ocsp.enable = false
+broker_1     | 	zookeeper.ssl.protocol = TLSv1.2
+broker_1     | 	zookeeper.ssl.truststore.location = null
+broker_1     | 	zookeeper.ssl.truststore.password = null
+broker_1     | 	zookeeper.ssl.truststore.type = null
+broker_1     |  (kafka.server.KafkaConfig)
+broker_1     | [2022-07-15 17:41:25,151] INFO [ThrottledChannelReaper-Fetch]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+broker_1     | [2022-07-15 17:41:25,157] INFO [ThrottledChannelReaper-Request]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+broker_1     | [2022-07-15 17:41:25,156] INFO [ThrottledChannelReaper-Produce]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+broker_1     | [2022-07-15 17:41:25,162] INFO [ThrottledChannelReaper-ControllerMutation]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+broker_1     | [2022-07-15 17:41:25,231] INFO Loading logs from log dirs ArraySeq(/var/lib/kafka/data) (kafka.log.LogManager)
+broker_1     | [2022-07-15 17:41:25,236] INFO Attempting recovery for all logs in /var/lib/kafka/data since no clean shutdown file was found (kafka.log.LogManager)
+broker_1     | [2022-07-15 17:41:25,244] INFO Loaded 0 logs in 13ms. (kafka.log.LogManager)
+broker_1     | [2022-07-15 17:41:25,247] INFO Starting log cleanup with a period of 300000 ms. (kafka.log.LogManager)
+broker_1     | [2022-07-15 17:41:25,252] INFO Starting log flusher with a default period of 9223372036854775807 ms. (kafka.log.LogManager)
+broker_1     | [2022-07-15 17:41:25,269] INFO Starting the log cleaner (kafka.log.LogCleaner)
+broker_1     | [2022-07-15 17:41:29,836] INFO [kafka-log-cleaner-thread-0]: Starting (kafka.log.LogCleaner)
+broker_1     | [2022-07-15 17:41:30,601] INFO [BrokerToControllerChannelManager broker=1 name=forwarding]: Starting (kafka.server.BrokerToControllerRequestThread)
+broker_1     | [2022-07-15 17:41:30,959] INFO Updated connection-accept-rate max connection creation rate to 2147483647 (kafka.network.ConnectionQuotas)
+broker_1     | [2022-07-15 17:41:31,029] INFO Awaiting socket connections on 0.0.0.0:9092. (kafka.network.DataPlaneAcceptor)
+broker_1     | [2022-07-15 17:41:31,108] INFO [SocketServer listenerType=ZK_BROKER, nodeId=1] Created data-plane acceptor and processors for endpoint : ListenerName(PLAINTEXT) (kafka.network.SocketServer)
+broker_1     | [2022-07-15 17:41:31,125] INFO [BrokerToControllerChannelManager broker=1 name=alterPartition]: Starting (kafka.server.BrokerToControllerRequestThread)
+broker_1     | [2022-07-15 17:41:31,178] INFO [ExpirationReaper-1-Produce]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+broker_1     | [2022-07-15 17:41:31,181] INFO [ExpirationReaper-1-Fetch]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+broker_1     | [2022-07-15 17:41:31,184] INFO [ExpirationReaper-1-DeleteRecords]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+broker_1     | [2022-07-15 17:41:31,189] INFO [ExpirationReaper-1-ElectLeader]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+broker_1     | [2022-07-15 17:41:31,243] INFO [LogDirFailureHandler]: Starting (kafka.server.ReplicaManager$LogDirFailureHandler)
+broker_1     | [2022-07-15 17:41:31,321] INFO Creating /brokers/ids/1 (is it secure? false) (kafka.zk.KafkaZkClient)
+broker_1     | [2022-07-15 17:41:31,398] INFO Stat of the created znode at /brokers/ids/1 is: 27,27,1657906891381,1657906891381,1,0,0,72057870946926593,196,0,27
+broker_1     |  (kafka.zk.KafkaZkClient)
+broker_1     | [2022-07-15 17:41:31,401] INFO Registered broker 1 at path /brokers/ids/1 with addresses: PLAINTEXT://broker:9092, czxid (broker epoch): 27 (kafka.zk.KafkaZkClient)
+broker_1     | [2022-07-15 17:41:31,506] INFO [ControllerEventThread controllerId=1] Starting (kafka.controller.ControllerEventManager$ControllerEventThread)
+broker_1     | [2022-07-15 17:41:31,553] INFO [ExpirationReaper-1-topic]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+broker_1     | [2022-07-15 17:41:31,576] INFO [ExpirationReaper-1-Heartbeat]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+broker_1     | [2022-07-15 17:41:31,579] INFO [ExpirationReaper-1-Rebalance]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+broker_1     | [2022-07-15 17:41:31,593] INFO Successfully created /controller_epoch with initial epoch 0 (kafka.zk.KafkaZkClient)
+broker_1     | [2022-07-15 17:41:31,628] INFO [Controller id=1] 1 successfully elected as the controller. Epoch incremented to 1 and epoch zk version is now 1 (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,638] INFO [GroupCoordinator 1]: Starting up. (kafka.coordinator.group.GroupCoordinator)
+broker_1     | [2022-07-15 17:41:31,648] INFO [Controller id=1] Creating FeatureZNode at path: /feature with contents: FeatureZNode(Enabled,Features{}) (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,657] INFO Feature ZK node created at path: /feature (kafka.server.FinalizedFeatureChangeListener)
+broker_1     | [2022-07-15 17:41:31,668] INFO [GroupCoordinator 1]: Startup complete. (kafka.coordinator.group.GroupCoordinator)
+broker_1     | [2022-07-15 17:41:31,714] INFO [TransactionCoordinator id=1] Starting up. (kafka.coordinator.transaction.TransactionCoordinator)
+broker_1     | [2022-07-15 17:41:31,731] INFO [TransactionCoordinator id=1] Startup complete. (kafka.coordinator.transaction.TransactionCoordinator)
+broker_1     | [2022-07-15 17:41:31,744] INFO [Transaction Marker Channel Manager 1]: Starting (kafka.coordinator.transaction.TransactionMarkerChannelManager)
+broker_1     | [2022-07-15 17:41:31,781] INFO Updated cache from existing <empty> to latest FinalizedFeaturesAndEpoch(features=Features{}, epoch=0). (kafka.server.FinalizedFeatureCache)
+broker_1     | [2022-07-15 17:41:31,782] INFO [Controller id=1] Registering handlers (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,800] INFO [Controller id=1] Deleting log dir event notifications (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,810] INFO [Controller id=1] Deleting isr change notifications (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,820] INFO [Controller id=1] Initializing controller context (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,838] INFO [ExpirationReaper-1-AlterAcls]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+broker_1     | [2022-07-15 17:41:31,864] INFO [Controller id=1] Initialized broker epochs cache: HashMap(1 -> 27) (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,884] DEBUG [Controller id=1] Register BrokerModifications handler for Set(1) (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,899] DEBUG [Channel manager on controller 1]: Controller 1 trying to connect to broker 1 (kafka.controller.ControllerChannelManager)
+broker_1     | [2022-07-15 17:41:31,932] INFO [/config/changes-event-process-thread]: Starting (kafka.common.ZkNodeChangeNotificationListener$ChangeEventProcessThread)
+broker_1     | [2022-07-15 17:41:31,942] INFO [RequestSendThread controllerId=1] Starting (kafka.controller.RequestSendThread)
+broker_1     | [2022-07-15 17:41:31,947] INFO [Controller id=1] Currently active brokers in the cluster: Set(1) (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,948] INFO [Controller id=1] Currently shutting brokers in the cluster: HashSet() (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,949] INFO [Controller id=1] Current list of topics in the cluster: HashSet() (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,950] INFO [Controller id=1] Fetching topic deletions in progress (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,960] INFO [Controller id=1] List of topics to be deleted:  (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,962] INFO [Controller id=1] List of topics ineligible for deletion:  (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,962] INFO [SocketServer listenerType=ZK_BROKER, nodeId=1] Starting socket server acceptors and processors (kafka.network.SocketServer)
+broker_1     | [2022-07-15 17:41:31,965] INFO [Controller id=1] Initializing topic deletion manager (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,967] INFO [Topic Deletion Manager 1] Initializing manager with initial deletions: Set(), initial ineligible deletions: HashSet() (kafka.controller.TopicDeletionManager)
+broker_1     | [2022-07-15 17:41:31,968] INFO [Controller id=1] Sending update metadata request (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:31,972] INFO [Controller id=1 epoch=1] Sending UpdateMetadata request to brokers HashSet(1) for 0 partitions (state.change.logger)
+broker_1     | [2022-07-15 17:41:31,989] INFO [SocketServer listenerType=ZK_BROKER, nodeId=1] Started data-plane acceptor and processor(s) for endpoint : ListenerName(PLAINTEXT) (kafka.network.SocketServer)
+broker_1     | [2022-07-15 17:41:31,990] INFO [SocketServer listenerType=ZK_BROKER, nodeId=1] Started socket server acceptors and processors (kafka.network.SocketServer)
+broker_1     | [2022-07-15 17:41:32,001] INFO Kafka version: 7.2.0-ccs (org.apache.kafka.common.utils.AppInfoParser)
+broker_1     | [2022-07-15 17:41:32,004] INFO Kafka commitId: b3e5bd063f47e0a6a8dda11d53b84f253ad19491 (org.apache.kafka.common.utils.AppInfoParser)
+broker_1     | [2022-07-15 17:41:32,004] INFO Kafka startTimeMs: 1657906891990 (org.apache.kafka.common.utils.AppInfoParser)
+broker_1     | [2022-07-15 17:41:32,021] INFO [ReplicaStateMachine controllerId=1] Initializing replica state (kafka.controller.ZkReplicaStateMachine)
+broker_1     | [2022-07-15 17:41:32,023] INFO [KafkaServer id=1] started (kafka.server.KafkaServer)
+broker_1     | [2022-07-15 17:41:32,024] INFO [ReplicaStateMachine controllerId=1] Triggering online replica state changes (kafka.controller.ZkReplicaStateMachine)
+broker_1     | [2022-07-15 17:41:32,034] INFO [ReplicaStateMachine controllerId=1] Triggering offline replica state changes (kafka.controller.ZkReplicaStateMachine)
+broker_1     | [2022-07-15 17:41:32,036] DEBUG [ReplicaStateMachine controllerId=1] Started replica state machine with initial state -> HashMap() (kafka.controller.ZkReplicaStateMachine)
+broker_1     | [2022-07-15 17:41:32,042] INFO [PartitionStateMachine controllerId=1] Initializing partition state (kafka.controller.ZkPartitionStateMachine)
+broker_1     | [2022-07-15 17:41:32,053] INFO [RequestSendThread controllerId=1] Controller 1 connected to broker:9092 (id: 1 rack: null) for sending state change requests (kafka.controller.RequestSendThread)
+broker_1     | [2022-07-15 17:41:32,054] INFO [PartitionStateMachine controllerId=1] Triggering online partition state changes (kafka.controller.ZkPartitionStateMachine)
+broker_1     | [2022-07-15 17:41:32,060] DEBUG [PartitionStateMachine controllerId=1] Started partition state machine with initial state -> HashMap() (kafka.controller.ZkPartitionStateMachine)
+broker_1     | [2022-07-15 17:41:32,061] INFO [Controller id=1] Ready to serve as the new controller with epoch 1 (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:32,074] INFO [Controller id=1] Partitions undergoing preferred replica election:  (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:32,075] INFO [Controller id=1] Partitions that completed preferred replica election:  (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:32,076] INFO [Controller id=1] Skipping preferred replica election for partitions due to topic deletion:  (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:32,077] INFO [Controller id=1] Resuming preferred replica election for partitions:  (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:32,081] INFO [Controller id=1] Starting replica leader election (PREFERRED) for partitions  triggered by ZkTriggered (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:32,128] INFO [Controller id=1] Starting the controller scheduler (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:32,196] TRACE [Controller id=1 epoch=1] Received response UpdateMetadataResponseData(errorCode=0) for request UPDATE_METADATA with correlation id 0 sent to broker broker:9092 (id: 1 rack: null) (state.change.logger)
+broker_1     | [2022-07-15 17:41:32,247] INFO [BrokerToControllerChannelManager broker=1 name=forwarding]: Recorded new controller, from now on will use broker broker:9092 (id: 1 rack: null) (kafka.server.BrokerToControllerRequestThread)
+broker_1     | [2022-07-15 17:41:32,277] INFO [BrokerToControllerChannelManager broker=1 name=alterPartition]: Recorded new controller, from now on will use broker broker:9092 (id: 1 rack: null) (kafka.server.BrokerToControllerRequestThread)
+broker_1     | [2022-07-15 17:41:37,126] INFO [Controller id=1] Processing automatic preferred replica leader election (kafka.controller.KafkaController)
+broker_1     | [2022-07-15 17:41:37,127] TRACE [Controller id=1] Checking need to trigger auto leader balancing (kafka.controller.KafkaController)
+zookeeper_1  | [2022-07-15 17:41:57,455] WARN Unexpected exception (org.apache.zookeeper.server.NIOServerCnxn)
+zookeeper_1  | EndOfStreamException: Unable to read additional data from client, it probably closed the socket: address = /172.21.0.3:37892, session = 0x100004079100001
+zookeeper_1  | 	at org.apache.zookeeper.server.NIOServerCnxn.handleFailedRead(NIOServerCnxn.java:163)
+zookeeper_1  | 	at org.apache.zookeeper.server.NIOServerCnxn.doIO(NIOServerCnxn.java:326)
+zookeeper_1  | 	at org.apache.zookeeper.server.NIOServerCnxnFactory$IOWorkRequest.doWork(NIOServerCnxnFactory.java:522)
+zookeeper_1  | 	at org.apache.zookeeper.server.WorkerService$ScheduledWorkRequest.run(WorkerService.java:154)
+zookeeper_1  | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+zookeeper_1  | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+zookeeper_1  | 	at java.base/java.lang.Thread.run(Thread.java:829)
+kafka_broker_1 exited with code 137
+zookeeper_1  | [2022-07-15 17:42:09,493] INFO Expiring session 0x100004079100001, timeout of 18000ms exceeded (org.apache.zookeeper.server.ZooKeeperServer)
+
+
+
+"""
+Because broker exits above, I'm unable to run the detector or generator containers to read the topics.
+"""
+(base) ➜  kafka git:(kafka) ✗ docker-compose up
+WARNING: Found orphan containers (kafka_broker_1, kafka_zookeeper_1) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
+Creating kafka_detector_1  ... done
+Creating kafka_generator_1 ... done
+Attaching to kafka_generator_1, kafka_detector_1
+detector_1   | Traceback (most recent call last):
+detector_1   |   File "app.py", line 18, in <module>
+detector_1   |     value_deserializer=lambda value: json.loads(value),
+detector_1   |   File "/usr/local/lib/python3.6/site-packages/kafka/consumer/group.py", line 356, in __init__
+detector_1   |     self._client = KafkaClient(metrics=self._metrics, **self.config)
+detector_1   |   File "/usr/local/lib/python3.6/site-packages/kafka/client_async.py", line 244, in __init__
+detector_1   |     self.config['api_version'] = self.check_version(timeout=check_timeout)
+detector_1   |   File "/usr/local/lib/python3.6/site-packages/kafka/client_async.py", line 900, in check_version
+detector_1   |     raise Errors.NoBrokersAvailable()
+detector_1   | kafka.errors.NoBrokersAvailable: NoBrokersAvailable
+generator_1  | Traceback (most recent call last):
+generator_1  |   File "app.py", line 16, in <module>
+generator_1  |     value_serializer=lambda value: json.dumps(value).encode(),
+generator_1  |   File "/usr/local/lib/python3.6/site-packages/kafka/producer/kafka.py", line 383, in __init__
+generator_1  |     **self.config)
+generator_1  |   File "/usr/local/lib/python3.6/site-packages/kafka/client_async.py", line 244, in __init__
+generator_1  |     self.config['api_version'] = self.check_version(timeout=check_timeout)
+generator_1  |   File "/usr/local/lib/python3.6/site-packages/kafka/client_async.py", line 900, in check_version
+generator_1  |     raise Errors.NoBrokersAvailable()
+generator_1  | kafka.errors.NoBrokersAvailable: NoBrokersAvailable
+kafka_detector_1 exited with code 1
+kafka_generator_1 exited with code 1
